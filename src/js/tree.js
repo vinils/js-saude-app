@@ -1,23 +1,44 @@
-function toListRecursively(treeNode, childsVariableName) {
+function loadTreeFunctions (rootNode, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName, parentNode = null) {
+    if(!rootNode) {
+        return;
+    }
+
+    rootNode[parentVariableName] = parentNode;
+    rootNode.parentReducer = (reduceItem, aggregatorCallBack) => parentReduce(rootNode, parentVariableName, reduceItem, aggregatorCallBack);
+    rootNode.toArray = () => toArray(rootNode, childsVariableName);
+    rootNode.findChild = (finderVariableName, keys) => findChild(rootNode, childsVariableName, finderVariableName, keys)
+    rootNode.getFull = (elementVariableName) => getFull(rootNode, elementVariableName)
+    rootNode.forEachTree = (callBackFuncion) => forEachTree(rootNode, childsVariableName, callBackFuncion)
+
+    if(parentNode && rootNode[parentIdVariableName] != parentNode[nodeIdVariableName]) {
+        console.log('node and parent node dont match. rootChildId: ' +  rootNode[nodeIdVariableName])
+    }
+
+    rootNode[childsVariableName].forEach(element => {
+        loadTreeFunctions(element, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName, rootNode)
+    });
+}
+
+function toArrayRecursively (treeNode, childsVariableName) {
     let ret = []
 
     treeNode[childsVariableName].forEach(child => {
         ret.push(child)
-        ret.push(...toListRecursively(child, childsVariableName))
+        ret.push(...toArrayRecursively(child, childsVariableName))
     })
 
     return ret
 }
   
-function toList(treeNode, childsVariableName) {
-    let ret = toListRecursively(treeNode, childsVariableName)
+function toArray (treeNode, childsVariableName) {
+    let ret = toArrayRecursively(treeNode, childsVariableName)
 
     ret.push(treeNode)
 
     return ret
 }
 
-function parentReduce(treeNode, parentVariableName, reduceItem, aggregatorCallBack) {
+function parentReduce (treeNode, parentVariableName, reduceItem, aggregatorCallBack) {
     let ret = aggregatorCallBack(null, reduceItem(treeNode))
     let parent = treeNode[parentVariableName] 
 
@@ -33,7 +54,7 @@ function parentReduce(treeNode, parentVariableName, reduceItem, aggregatorCallBa
 //     nodesToBeMapped.forEach(parent => {
 //       parent[parentVariableName] = nodesToBeMappedParent;
 //       parent.parentReducer = (reduceItem, aggregatorCallBack) => parentReduce(parent, parentVariableName, reduceItem, aggregatorCallBack)
-//       parent.toList = () => toList(parent, childsVariableName)
+//       parent.toArray = () => toArray(parent, childsVariableName)
 //       parent.findChild = (finderVariableName, keys) => findChild(parent, childsVariableName, finderVariableName, keys)
 //       parent.getFull = (elementVariableName) => getFull(parent, elementVariableName)
 //       parent.forEachTree = (callBackFuncion) => forEachTree(parent, childsVariableName, callBackFuncion)
@@ -56,31 +77,6 @@ function parentReduce(treeNode, parentVariableName, reduceItem, aggregatorCallBa
 //     })
 // }
 
-function loadTreeFunctions(rootNode, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName, parentNode = null) {
-    if(!rootNode) {
-        return;
-    }
-
-    rootNode[parentVariableName] = parentNode;
-    rootNode.parentReducer = (reduceItem, aggregatorCallBack) => parentReduce(rootNode, parentVariableName, reduceItem, aggregatorCallBack);
-    rootNode.toList = () => toList(rootNode, childsVariableName);
-    rootNode.findChild = (finderVariableName, keys) => findChild(rootNode, childsVariableName, finderVariableName, keys)
-    rootNode.getFull = (elementVariableName) => getFull(rootNode, elementVariableName)
-    rootNode.forEachTree = (callBackFuncion) => forEachTree(rootNode, childsVariableName, callBackFuncion)
-
-    if(parentNode && rootNode[parentIdVariableName] != parentNode[nodeIdVariableName]) {
-        console.log('node and parent node dont match. rootChildId: ' +  rootNode[nodeIdVariableName])
-    }
-
-    rootNode[childsVariableName].forEach(element => {
-        loadTreeFunctions(element, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName, rootNode)
-    });
-}
-
-function treeExtensions(prototype) {
-    prototype.parentReducer = (reduceItem, callBack)  => parentReduce(this, 'Parent', reduceItem, callBack)
-    prototype.toList = () => toList(this, 'Childs')
-}
 
 // export const castArrayToTree = (array, rootNodeToBeMapped, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
 //     castArrayToTreeRecursively(array, [rootNodeToBeMapped], null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName);
@@ -89,20 +85,30 @@ function treeExtensions(prototype) {
 
 // export const castArrayToArrayOfTree = (array, nodesToBeMapped, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
 //     castArrayToTreeRecursively(array, nodesToBeMapped, null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName);
-//     nodesToBeMapped.toList = () => arrayOfTreeToList(nodesToBeMapped)
+//     nodesToBeMapped.toArray = () => arrayOfTreetoArray(nodesToBeMapped)
 
 //     return nodesToBeMapped;
 // }
 
-// const arrayOfTreeToList = (array) => {
+// const arrayOfTreeToArray = (array) => {
 //   let ret = []
 //   array.forEach(item => {
-//     ret.push(...item.toList())
+//     ret.push(...item.toArray())
 //   });
 //   return ret;
 // }
 
-function findChild(node, childsVariableName, finderVariableName, keys, keyIndex = 0) {
+function treeExtensions (prototype) {
+    prototype.parentReducer = function(reduceItem, callBack) {
+        return parentReduce(this, 'Parent', reduceItem, callBack)
+    }
+
+    prototype.toArray = function() {
+        return toArray(this, 'Childs')
+    }
+}
+
+function findChild (node, childsVariableName, finderVariableName, keys, keyIndex = 0) {
     let nextchild = node[childsVariableName].find(child => child[finderVariableName] == keys[keyIndex]);
 
     if(keyIndex + 1 == keys.length) {
@@ -112,13 +118,13 @@ function findChild(node, childsVariableName, finderVariableName, keys, keyIndex 
     }
 }
 
-function getFull(node, elementVariableName, separator = '\\') {
+function getFull (node, elementVariableName, separator = '\\') {
     let reduceItemFn = element => element[elementVariableName];
     let accumulatorFn = (accumulator, currentValue) => accumulator ? currentValue + separator + accumulator : currentValue;
     return node.parentReducer(reduceItemFn, accumulatorFn);
 }
 
-function forEachTree(node, childsVariableName, callBackFuncion) {
+function forEachTree (node, childsVariableName, callBackFuncion) {
     let callBackFunctionRecursively = (element) => { callBackFuncion(element); forEachTree(element, childsVariableName, callBackFuncion); } 
     node[childsVariableName].forEach(callBackFunctionRecursively)
 }

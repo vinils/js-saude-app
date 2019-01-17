@@ -8886,54 +8886,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function toListRecursively(treeNode, childsVariableName) {
-  var ret = [];
-  treeNode[childsVariableName].forEach(function (child) {
-    ret.push(child);
-    ret.push.apply(ret, _toConsumableArray(toListRecursively(child, childsVariableName)));
-  });
-  return ret;
-}
-
-function toList(treeNode, childsVariableName) {
-  var ret = toListRecursively(treeNode, childsVariableName);
-  ret.push(treeNode);
-  return ret;
-}
-
-function parentReduce(treeNode, parentVariableName, reduceItem, aggregatorCallBack) {
-  var ret = aggregatorCallBack(null, reduceItem(treeNode));
-  var parent = treeNode[parentVariableName];
-
-  while (parent) {
-    ret = aggregatorCallBack(ret, reduceItem(parent));
-    parent = parent[parentVariableName];
-  }
-
-  return ret;
-} // const castArrayToTreeRecursively = (list, nodesToBeMapped, nodesToBeMappedParent = null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
-//     nodesToBeMapped.forEach(parent => {
-//       parent[parentVariableName] = nodesToBeMappedParent;
-//       parent.parentReducer = (reduceItem, aggregatorCallBack) => parentReduce(parent, parentVariableName, reduceItem, aggregatorCallBack)
-//       parent.toList = () => toList(parent, childsVariableName)
-//       parent.findChild = (finderVariableName, keys) => findChild(parent, childsVariableName, finderVariableName, keys)
-//       parent.getFull = (elementVariableName) => getFull(parent, elementVariableName)
-//       parent.forEachTree = (callBackFuncion) => forEachTree(parent, childsVariableName, callBackFuncion)
-//       if(!parent[childsVariableName]) {
-//         parent[childsVariableName] = [];
-//       }
-//       let childs = list.filter((child) => child[parentIdVariableName] == parent[nodeIdVariableName]);
-//       if(!childs || childs.length <= 0) {
-//         return;
-//       }
-//       castArrayToTreeRecursively(list, childs, parent, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName)
-//       childs.forEach(e => {
-//         parent[childsVariableName].push(e)
-//       });
-//     })
-// }
-
-
 function loadTreeFunctions(rootNode, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) {
   var parentNode = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : null;
 
@@ -8947,8 +8899,8 @@ function loadTreeFunctions(rootNode, nodeIdVariableName, childsVariableName, par
     return parentReduce(rootNode, parentVariableName, reduceItem, aggregatorCallBack);
   };
 
-  rootNode.toList = function () {
-    return toList(rootNode, childsVariableName);
+  rootNode.toArray = function () {
+    return toArray(rootNode, childsVariableName);
   };
 
   rootNode.findChild = function (finderVariableName, keys) {
@@ -8972,33 +8924,79 @@ function loadTreeFunctions(rootNode, nodeIdVariableName, childsVariableName, par
   });
 }
 
-function treeExtensions(prototype) {
-  var _this = this;
+function toArrayRecursively(treeNode, childsVariableName) {
+  var ret = [];
+  treeNode[childsVariableName].forEach(function (child) {
+    ret.push(child);
+    ret.push.apply(ret, _toConsumableArray(toArrayRecursively(child, childsVariableName)));
+  });
+  return ret;
+}
 
-  prototype.parentReducer = function (reduceItem, callBack) {
-    return parentReduce(_this, 'Parent', reduceItem, callBack);
-  };
+function toArray(treeNode, childsVariableName) {
+  var ret = toArrayRecursively(treeNode, childsVariableName);
+  ret.push(treeNode);
+  return ret;
+}
 
-  prototype.toList = function () {
-    return toList(_this, 'Childs');
-  };
-} // export const castArrayToTree = (array, rootNodeToBeMapped, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
+function parentReduce(treeNode, parentVariableName, reduceItem, aggregatorCallBack) {
+  var ret = aggregatorCallBack(null, reduceItem(treeNode));
+  var parent = treeNode[parentVariableName];
+
+  while (parent) {
+    ret = aggregatorCallBack(ret, reduceItem(parent));
+    parent = parent[parentVariableName];
+  }
+
+  return ret;
+} // const castArrayToTreeRecursively = (list, nodesToBeMapped, nodesToBeMappedParent = null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
+//     nodesToBeMapped.forEach(parent => {
+//       parent[parentVariableName] = nodesToBeMappedParent;
+//       parent.parentReducer = (reduceItem, aggregatorCallBack) => parentReduce(parent, parentVariableName, reduceItem, aggregatorCallBack)
+//       parent.toArray = () => toArray(parent, childsVariableName)
+//       parent.findChild = (finderVariableName, keys) => findChild(parent, childsVariableName, finderVariableName, keys)
+//       parent.getFull = (elementVariableName) => getFull(parent, elementVariableName)
+//       parent.forEachTree = (callBackFuncion) => forEachTree(parent, childsVariableName, callBackFuncion)
+//       if(!parent[childsVariableName]) {
+//         parent[childsVariableName] = [];
+//       }
+//       let childs = list.filter((child) => child[parentIdVariableName] == parent[nodeIdVariableName]);
+//       if(!childs || childs.length <= 0) {
+//         return;
+//       }
+//       castArrayToTreeRecursively(list, childs, parent, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName)
+//       childs.forEach(e => {
+//         parent[childsVariableName].push(e)
+//       });
+//     })
+// }
+// export const castArrayToTree = (array, rootNodeToBeMapped, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
 //     castArrayToTreeRecursively(array, [rootNodeToBeMapped], null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName);
 //     return rootNodeToBeMapped;
 // }
 // export const castArrayToArrayOfTree = (array, nodesToBeMapped, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName) => {
 //     castArrayToTreeRecursively(array, nodesToBeMapped, null, nodeIdVariableName, childsVariableName, parentVariableName, parentIdVariableName);
-//     nodesToBeMapped.toList = () => arrayOfTreeToList(nodesToBeMapped)
+//     nodesToBeMapped.toArray = () => arrayOfTreetoArray(nodesToBeMapped)
 //     return nodesToBeMapped;
 // }
-// const arrayOfTreeToList = (array) => {
+// const arrayOfTreeToArray = (array) => {
 //   let ret = []
 //   array.forEach(item => {
-//     ret.push(...item.toList())
+//     ret.push(...item.toArray())
 //   });
 //   return ret;
 // }
 
+
+function treeExtensions(prototype) {
+  prototype.parentReducer = function (reduceItem, callBack) {
+    return parentReduce(this, 'Parent', reduceItem, callBack);
+  };
+
+  prototype.toArray = function () {
+    return toArray(this, 'Childs');
+  };
+}
 
 function findChild(node, childsVariableName, finderVariableName, keys) {
   var keyIndex = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
