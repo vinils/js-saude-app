@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="images/favicon.ico" type="image/ico" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <title>Prj Saúde! | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-plus-circle"></i> <span>Prj Saúde!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Bem vindo,</span>
+                <h2>Vinícius L. Santos</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="">Dashboard2</a></li>
+                      <li><a href="">Dashboard3</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-flash"></i> Físico <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="asdfdf">General Elements</a></li>
+                      <li><a href="sadf">General</a></li>
+                      <li><a href="asdf">Adicionar</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-medkit"></i> Médico <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="asdf">General Elements</a></li>
+                      <li><a href="asdf">General</a></li>
+                      <li><a href="asdf">Adicionar</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Live On</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#level1_1">Level One</a>
+                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                            </li>
+                            <li><a href="#level2_1">Level Two</a>
+                            </li>
+                            <li><a href="#level2_2">Level Two</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#level1_2">Level One</a>
+                        </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">Vinícius L. Santos
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">6</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John Smith</span>
+                          <span class="time">3 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>See All Alerts</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count">
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fa fa-flash"></i></div>
+                <div id="physicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Físico</h3>
+                <p>Último <i id="physicalExamLastDate" class="green">1% </i></p>
+              </div>
+            </div>
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fa fa-medkit"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Médico</h3>
+                <p>Último <i id="medicalExamLastDate" class="green">4% </i></p>
+              </div>
+            </div>
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fa fa-heart"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Cardiáco</h3>
+                <p>Último <i id="medicalExamLastDate" class="green">3% </i></p>
+              </div>
+            </div>
+            <!-- <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fa fa-spoon"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Alimentação</h3>
+                <p>Último <i id="medicalExamLastDate" class="green">4% </i></p>
+              </div>
+            </div> -->
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fa fa-bed"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Sono</h3>
+                <p>Último <i id="medicalExamLastDate" class="green">6% </i></p>
+              </div>
+            </div>
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
+                <div class="icon"><i class="fas fa-weight-hanging"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Peso</h3>
+                <p>Último <i id="medicalExamLastDate" class="green">5% </i></p>
+              </div>
+            </div>
+            <!-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
+              <div class="count green">2,500</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            </div> -->
+            <!-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
+              <div class="count">4,567</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+            </div> -->
+          </div>
+          <!-- /top tiles -->
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="dashboard_graph">
+
+                <div class="row x_title">
+                  <div class="col-md-6">
+                    <h3>Físico <small>Peso (total, magro e gordo) </small></h3>
+                  </div>
+                  <div class="col-md-6">
+                    <!-- <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div> -->
+                  </div>
+                </div>
+
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <canvas id="pesoChart"></canvas>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+                  <div class="x_title">
+                    <h2>Evolução do peso</h2>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    <div>
+                      <p>Três meses</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p>Um mês</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-6">
+                    <div>
+                      <p>Última semana</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <p>Atual</p>
+                      <div class="">
+                        <div class="progress progress_sm" style="width: 76%;">
+                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+          </div>
+          <br />
+
+          <div class="row">
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Sono <small>Aproveitamento</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="timeInBedChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Sono <small>Estágios</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <table class="" style="width:100%">
+                    <tr>
+                      <th style="width:45%;" rowspan='2'>
+                          <!-- <p>Top 5</p> -->
+                          <!-- <canvas id="sonoEstagiosChart" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas> -->
+                          <canvas id="sonoEstagiosChart" height="140" width="140" ></canvas>
+                      </th>
+                      <th>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                          <p class="">Estágios</p>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                          <p class="">Ordem</p>
+                        </div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <!-- <td>
+                          <canvas id="sonoEstagiosChart" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                      </td> -->
+                      <td>
+                        <table class="tile_info">
+                          <tr>
+                            <td>
+                              <p id="acrodadoLabelDesc"><i class="fa fa-square" style="color:rgb(255, 99, 132)"></i>Acordado</p>
+                            </td>
+                            <td><p id="lastYearDesc">Ano</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p id="remLabelDesc"><i class="fa fa-square" style="color:orange"></i>REM</p>
+                            </td>
+                            <td><p id="last3MonthsDesc">Trim</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p id="profundoLabelDesc"><i class="fa fa-square blue"></i>Profundo</p>
+                            </td>
+                            <td><p id="lastMonthDesc">Mês</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p id="leveLabelDesc"><i class="fa fa-square green"></i>Leve</p>
+                            </td>
+                            <td><p id="last4DayDesc">Day4</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <!-- <p><i class="fa fa-square red"></i>Others </p> -->
+                            </td>
+                            <td><p id="last3DaysDesc">Day3</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <!-- <p><i class="fa fa-square red"></i>Others </p> -->
+                            </td>
+                            <td><p id="last2DaysDesc">Day2</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <!-- <p><i class="fa fa-square red"></i>Others </p> -->
+                            </td>
+                            <td><p id="yesterDayDesc">Ontém</p></td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <!-- <p><i class="fa fa-square red"></i>Others </p> -->
+                            </td>
+                            <td><p id="todayDesc">Hoje</p></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Evolução <small>Percentual de crescimento dos membros </small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="evolucaoChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Benchmarking Schwarzenegger<small>Comparação de medidas</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="benchmarkingChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- <br /> -->
+
+          <div class="row">
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Cárdio <small>BPM diário</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="cardioDaylyChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Cárdio<small>Acompanhamento</small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <canvas id="cardioAcompanhamentoChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Exames <small></small></h2>
+                  <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <!-- <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Settings 1</a>
+                        </li>
+                        <li><a href="#">Settings 2</a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                  </ul>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div id="saudeExams"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            <input id="test" type='button' value='Carregar' class="btn"/>
+
+            <!-- Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> -->
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+    <!-- required for chart.js with date such as pesoDate -->
+    <script src="../vendors/Chart.js/dist/Chart.bundle.min.js"></script>
+    
+    <!-- required for chart.js with date such as pesoDate -->
+    <script src="../vendors/datajs/datajs.min.js"></script>
+
+
+    <script type="module">
+      let groupsId = {
+        fisico: {
+          id: 'BA70277A-2FDF-4B3F-B2AC-1521C4BEB48D',
+        },
+        sono: {
+          id: '3BBF57E4-4A32-4590-BBDC-70510109ECEB',
+          total: {
+            id: 'D28289C7-C532-4345-8847-247DE09F406E',
+          },
+          stage: {
+            id: '1E2E19A7-23B6-4DAE-8439-4F1F8D77514C',
+          },
+          classic: {
+            id: '238A6AF0-8FAA-4228-8531-6E83D83C879B',
+          },
+          summary: {
+            id: '8EC4BC4F-B0FC-4C17-8EC5-E9B964450DE3',
+          },
+        },
+        cardio: {
+          id: '3A6EFE92-00A4-4B1B-BC40-C5B2C83CF0C1',
+          frequencia: {
+            id: 'C0EFE267-E8ED-4B79-A125-DB15ABC0780D',
+          },
+        },
+        exames: {
+          id: '98B34F14-6DAA-3EE4-4EB1-E6D4F691960E',
+        },
+      }
+
+      let odata = {
+        // url : 'http://192.168.15.143:5000/odata/v4',
+        url: 'http://192.168.15.250/data/odata/v4',
+        nameSpace: '#Data.Models',
+        groups: {
+          point: '/groups',
+          nameSpacePoint: '.Group',
+        },
+        exams : {
+          point: '/exams',
+          nameSpacePoint: '.Exam',
+          bulkInsert: {
+            point: '/BulkInsert',
+            nameSpacePoint: '.Exam',
+          }, 
+          decimals: {
+            point: '/examdecimals',
+            nameSpacePoint: '.ExamDecimal',
+          }, 
+          strings: {
+            point: '/examstrings',
+            nameSpacePoint: '.ExamString',
+          }
+        }
+      }
+
+      odata = bugObjPropertyEdge(odata);
+
+      document.getElementById('test').onclick = function() {
+        let currentUrl = window.location.href.replace('#', '') + "?"
+        let clientId = '22D54F'
+        let expiresIn = 604800
+        document.location.href=`https://www.fitbit.com/oauth2/authorize?response_type=token`+
+        `&client_id=${clientId}` + 
+        `&redirect_uri=${encodeURIComponent(currentUrl)}` + 
+        `&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight` + 
+        `&expires_in=${expiresIn}`
+      };
+
+      loadMomentPrototype(moment.prototype);
+      loadStringPrototype(String.prototype);
+      loadArrayPrototype(Array.prototype);
+
+      let fisicoUrl = odata.groups.url + `?$filter=Id eq ${groupsId.fisico.id}&$expand=Childs($levels=max;$expand=Exams)`
+      fetch(fisicoUrl)
+        .then(res => res.json())
+        .then(json => {
+          let tree = json.value[0]
+          loadTreeFunctions(tree, 'Id', 'Childs', 'Parent', 'ParentId')
+
+          let pesoMagro = null
+          let pesoGordo = null
+          let quadril = null
+          let torax = null
+          let abdomen = null
+          let cintura = null
+          let antebracoDireito = null
+          let antebracoEsquerdo = null
+          let bracoDireito = null
+          let bracoEsquerdo = null
+          let coxaDireita = null
+          let coxaEsquerda = null
+          let panturrilhaDireita = null
+          let panturrilhaEsquerda = null
+
+          tree.forEachTree(node => {
+            let fullName = node.getFull('Name');
+
+            switch(fullName)
+            {
+              case 'Físico\\Abdomen':
+                abdomen = node
+                break;
+              case 'Físico\\Braço direito':
+                bracoDireito = node
+              break;
+              case 'Físico\\Antebraço direito':
+                antebracoDireito = node
+                break;
+              case 'Físico\\Tórax':
+                torax = node
+                break;
+              case 'Físico\\Peso':
+                break;
+              case 'Físico\\Peso\\Gordo':
+                pesoGordo = node
+                break;
+              case 'Físico\\Peso\\Magro':
+                pesoMagro = node
+                break;
+              case 'Físico\\Antebraço esquerdo':
+                antebracoEsquerdo = node
+                break;
+              case 'Físico\\Agua Corporal':
+                break;
+              case 'Físico\\Coxa direita':
+                coxaDireita = node
+                break;
+              case 'Físico\\Cintura':
+                cintura = node
+                break;
+              case 'Físico\\Altura':
+                break;
+              case 'Físico\\Braço esquerdo':
+                bracoEsquerdo = node
+                break;
+              case 'Físico\\Coxa esquerda':
+                coxaEsquerda = node
+                break;
+              case 'Físico\\Panturrilha direita':
+                panturrilhaDireita = node
+                break;
+              case 'Físico\\Panturrilha esquerda':
+                panturrilhaEsquerda = node
+                break;
+              case 'Físico\\Quadril':              
+                quadril = node
+                break;
+              default :
+                break;
+            }
+          })
+
+          let pesoGroupByDate = (pesoExam) => new moment(pesoExam.CollectionDate).format('YYYY-MM-DD')
+
+          let pesoGroupKeys = pesoMagro.Exams.map(pesoGroupByDate)
+            .concat(pesoGordo.Exams.map(pesoGroupByDate))
+            .Distinct()
+            .sort((a,b) => new Date(a) - new Date(b))
+
+          let pesosLabel = [];
+          let pesosTotal = [];
+          let pesosMagro = [];
+          let pesosGordo = [];
+          
+          let pesoGordoExamsGroupedByCollectionDate = pesoGordo.Exams.GroupBy(pesoGroupByDate)
+          let pesoMagroExamsGroupedByCollectionDate = pesoMagro.Exams.GroupBy(pesoGroupByDate)
+
+          pesoGroupKeys.forEach(dateKey => {
+            let pesoGordoAvg = pesoGordoExamsGroupedByCollectionDate[dateKey].Average(exam => exam.DecimalValue);
+            let pesoMagroAvg = pesoMagroExamsGroupedByCollectionDate[dateKey].Average(exam => exam.DecimalValue);
+
+            pesosGordo.push(pesoGordoAvg)
+            pesosMagro.push(pesoMagroAvg)
+            pesosTotal.push(pesoGordoAvg + pesoMagroAvg)
+            pesosLabel.push(new moment(dateKey).format('MMM YYYY'))
+          })
+
+          pesoLabel(
+              'pesoChart',
+              pesosLabel,
+              pesosTotal,
+              pesosMagro,
+              pesosGordo)
+
+          // pesoDate(
+          //   'pesoChart',
+          //     pesoGroupKeys.map((date, index) => {return {x:new Date(date), y:pesosTotal[index]}}),
+          //     pesoMagroExams.Exams.map(exam=> {return {x:new Date(exam.CollectionDate), y:exam.DecimalValue}}),
+          //     pesoGordoExams.Exams.map(exam=> {return {x:new Date(exam.CollectionDate), y:exam.DecimalValue}}))
+
+          let evolucaoGroupByDate = (exam) => new moment(exam.CollectionDate).format('YYYY-MM-DD')
+
+          let evolucaoDates = quadril.Exams.map(evolucaoGroupByDate)
+            .concat(torax.Exams.map(evolucaoGroupByDate))
+            .concat(abdomen.Exams.map(evolucaoGroupByDate))
+            .concat(cintura.Exams.map(evolucaoGroupByDate))
+            .concat(antebracoDireito.Exams.map(evolucaoGroupByDate))
+            .concat(antebracoEsquerdo.Exams.map(evolucaoGroupByDate))
+            .concat(bracoDireito.Exams.map(evolucaoGroupByDate))
+            .concat(bracoEsquerdo.Exams.map(evolucaoGroupByDate))
+            .concat(coxaDireita.Exams.map(evolucaoGroupByDate))
+            .concat(coxaEsquerda.Exams.map(evolucaoGroupByDate))
+            .concat(panturrilhaDireita.Exams.map(evolucaoGroupByDate))
+            .concat(panturrilhaEsquerda.Exams.map(evolucaoGroupByDate))
+            .Distinct()
+            .sort((a,b) => new Date(a) - new Date(b))
+
+          let quadrilExamsGroupedByCollectionDate = quadril.Exams.GroupBy(evolucaoGroupByDate)
+          let toraxExamsGroupedByCollectionDate = torax.Exams.GroupBy(evolucaoGroupByDate)
+          let abdomenExamsGroupedByCollectionDate = abdomen.Exams.GroupBy(evolucaoGroupByDate)
+          let cinturaExamsGroupedByCollectionDate = cintura.Exams.GroupBy(evolucaoGroupByDate)
+          let antebracoDireitoExamsGroupedByCollectionDate = antebracoDireito.Exams.GroupBy(evolucaoGroupByDate)
+          let antebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdo.Exams.GroupBy(evolucaoGroupByDate)
+          let bracoDireitoExamsGroupedByCollectionDate = bracoDireito.Exams.GroupBy(evolucaoGroupByDate)
+          let bracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdo.Exams.GroupBy(evolucaoGroupByDate)
+          let coxaDireitaExamsGroupedByCollectionDate = coxaDireita.Exams.GroupBy(evolucaoGroupByDate)
+          let coxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerda.Exams.GroupBy(evolucaoGroupByDate)
+          let panturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireita.Exams.GroupBy(evolucaoGroupByDate)
+          let panturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerda.Exams.GroupBy(evolucaoGroupByDate)
+
+          let quadrilEvolucao = []
+          let toraxEvolucao = []
+          let abdomenEvolucao = []
+          let cinturaEvolucao = []
+          let antebracoDireitoEvolucao = []
+          let antebracoEsquerdoEvolucao = []
+          let antebracosEvolucao = []
+          let bracoDireitoEvolucao = []
+          let bracoEsquerdoEvolucao = []
+          let bracosEvolucao = []
+          let coxaDireitaEvolucao = []
+          let coxaEsquerdaEvolucao = []
+          let coxasEvolucao = []
+          let panturrilhaDireitaEvolucao = []
+          let panturrilhaEsquerdaEvolucao = []
+          let panturrilhasEvolucao = []
+
+          let firstQuadrilExamsGroupedByCollectionDate = quadrilExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstToraxExamsGroupedByCollectionDate = toraxExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAbdomenExamsGroupedByCollectionDate = abdomenExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCinturaExamsGroupedByCollectionDate = cinturaExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAntebracoDireitoExamsGroupedByCollectionDate = antebracoDireitoExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAntebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstBracoDireitoExamsGroupedByCollectionDate = bracoDireitoExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstBracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCoxaDireitaExamsGroupedByCollectionDate = coxaDireitaExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCoxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstPanturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireitaExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstPanturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[0]]
+
+          for(let index = 1; index < evolucaoDates.length; index++) {
+            let currentQuadrilExamsGroupedByCollectionDate = quadrilExamsGroupedByCollectionDate[evolucaoDates[index]]
+
+            if(!currentQuadrilExamsGroupedByCollectionDate) {
+              quadrilEvolucao.push(quadrilEvolucao.Last())
+            } else {
+              quadrilEvolucao.push((currentQuadrilExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstQuadrilExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentToraxExamsGroupedByCollectionDate = toraxExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentToraxExamsGroupedByCollectionDate) {
+              toraxEvolucao.push(toraxEvolucao.Last())
+            } else {
+              toraxEvolucao.push((currentToraxExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstToraxExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentAbdomenExamsGroupedByCollectionDate = abdomenExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentAbdomenExamsGroupedByCollectionDate) {
+              abdomenEvolucao.push(abdomenEvolucao.Last())
+            } else {
+              abdomenEvolucao.push((currentAbdomenExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAbdomenExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentCinturaExamsGroupedByCollectionDate = cinturaExamsGroupedByCollectionDate[evolucaoDates[index]]
+
+            if(!currentCinturaExamsGroupedByCollectionDate) {
+              cinturaEvolucao.push(cinturaEvolucao.Last())
+            } else {
+              cinturaEvolucao.push((currentCinturaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCinturaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentAntebracoDireitoExamsGroupedByCollectionDate = antebracoDireitoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentAntebracoDireitoExamsGroupedByCollectionDate) {
+              antebracoDireitoEvolucao.push(antebracoDireitoEvolucao.Last())
+            } else {
+              antebracoDireitoEvolucao.push((currentAntebracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAntebracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentAntebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentAntebracoEsquerdoExamsGroupedByCollectionDate) {
+              antebracoEsquerdoEvolucao.push(antebracoEsquerdoEvolucao.Last())
+            } else {
+              antebracoEsquerdoEvolucao.push((currentAntebracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAntebracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            antebracosEvolucao.push((antebracoDireitoEvolucao.Last() + antebracoEsquerdoEvolucao.Last())/2)
+
+            let currentBracoDireitoExamsGroupedByCollectionDate = bracoDireitoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentBracoDireitoExamsGroupedByCollectionDate) {
+              bracoDireitoEvolucao.push(bracoDireitoEvolucao.Last())
+            } else {
+              bracoDireitoEvolucao.push((currentBracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstBracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentBracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentBracoEsquerdoExamsGroupedByCollectionDate) {
+              bracoEsquerdoEvolucao.push(bracoEsquerdoEvolucao.Last())
+            } else {
+              bracoEsquerdoEvolucao.push((currentBracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstBracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            bracosEvolucao.push((bracoDireitoEvolucao.Last() + bracoEsquerdoEvolucao.Last())/2)
+
+            let currentCoxaDireitaExamsGroupedByCollectionDate = coxaDireitaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentCoxaDireitaExamsGroupedByCollectionDate) {
+              coxaDireitaEvolucao.push(coxaDireitaEvolucao.Last())
+            } else {
+              coxaDireitaEvolucao.push((currentCoxaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCoxaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentCoxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentCoxaEsquerdaExamsGroupedByCollectionDate) {
+              coxaEsquerdaEvolucao.push(coxaEsquerdaEvolucao.Last())
+            } else {
+              coxaEsquerdaEvolucao.push((currentCoxaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCoxaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            coxasEvolucao.push((coxaDireitaEvolucao.Last() + coxaEsquerdaEvolucao.Last())/2)
+
+            let currentPanturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireitaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentPanturrilhaDireitaExamsGroupedByCollectionDate) {
+              panturrilhaDireitaEvolucao.push(panturrilhaDireitaEvolucao.Last())
+            } else {
+              panturrilhaDireitaEvolucao.push((currentPanturrilhaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstPanturrilhaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            let currentPanturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            
+            if(!currentPanturrilhaEsquerdaExamsGroupedByCollectionDate) {
+              panturrilhaEsquerdaEvolucao.push(panturrilhaEsquerdaEvolucao.Last())
+            } else {
+              panturrilhaEsquerdaEvolucao.push((currentPanturrilhaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstPanturrilhaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+            }
+
+            panturrilhasEvolucao.push((panturrilhaDireitaEvolucao.Last() + panturrilhaEsquerdaEvolucao.Last())/2)
+          }
+
+          evolucaoLabel(
+            'evolucaoChart',
+            evolucaoDates.slice(1,evolucaoDates.length),
+            quadrilEvolucao,
+            toraxEvolucao,
+            abdomenEvolucao,
+            cinturaEvolucao,
+            antebracosEvolucao,
+            bracosEvolucao,
+            coxasEvolucao,
+            panturrilhasEvolucao)
+
+        let lastEvolucaoDate = evolucaoDates.Last()
+
+        benchmarking(
+          'benchmarkingChart',
+          (bracoDireitoExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + bracoEsquerdoExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
+          toraxExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue),
+          (coxaDireitaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + coxaEsquerdaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
+          (panturrilhaDireitaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + panturrilhaEsquerdaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
+          cinturaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue),
+          pesosTotal.Last(),
+          176
+        )
+      })
+
+
+      let sonoSumaryUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.summary.id}&$expand=Childs($levels=max;$expand=Exams)`
+      fetch(sonoSumaryUrl)
+        .then(res => res.json())
+        .then(json => {
+
+          let sonoSumrayNode = json.value[0];
+
+          let todayDate = new Date();
+          let lastYearDate = new moment(todayDate).subtract(12, 'months').toDate();
+          let wakeAvgLastYear = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
+            .Average(exam => exam.DecimalValue)
+          let remAvgLastYear = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLastYear = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
+            .Average(exam => exam.DecimalValue)
+          let lightLastYear = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
+            .Average(exam => exam.DecimalValue)
+          let last3MonthsDate = new moment(todayDate).subtract(3, 'months').toDate();
+          let wakeAvgLast3Months = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let remAvgLast3Months = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLast3Months = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let lightLast3Months = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let lastMonthsDate = new moment(todayDate).subtract(1, 'months').toDate();
+          let wakeAvgLastMonths = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let remAvgLastMonths = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLastMonths = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let lightLastMonths = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
+            .Average(exam => exam.DecimalValue)
+          let last4DayDate = new moment(todayDate).subtract(4, 'days').toDate();
+          let wakeAvgLast4Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let remAvgLast4Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLast4Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let lightLast4Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let last3DayDate = new moment(todayDate).subtract(3, 'days').toDate();
+          let wakeAvgLast3Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let remAvgLast3Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLast3Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let lightLast3Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let last2DayDate = new moment(todayDate).subtract(2, 'days').toDate();
+          let wakeAvgLast2Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let remAvgLast2Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLast2Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let lightLast2Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let last1DayDate = new moment(todayDate).subtract(1, 'days').toDate();
+          let wakeAvgLast1Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let remAvgLast1Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let deepAvgLast1Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let lightLast1Day = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let wakeAvgToday = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Wake')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let remAvgToday = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'REM')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let deepAvgToday = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Deep')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
+            .Average(exam => exam.DecimalValue)
+          let lightToday = sonoSumrayNode
+            .Childs
+            .find(child => child.Name === 'Light')
+            .Exams
+            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
+            .Average(exam => exam.DecimalValue)            
+
+          let sonoAvgLastYear = [wakeAvgLastYear, remAvgLastYear, deepAvgLastYear, lightLastYear]
+          let sonoAvgLast3Month = [wakeAvgLast3Months, remAvgLast3Months, deepAvgLast3Months, lightLast3Months]
+          let sonoAvgLastMonth = [wakeAvgLastMonths, remAvgLastMonths, deepAvgLastMonths, lightLastMonths]
+          let sonoAvgLast4Day = [wakeAvgLast4Day, remAvgLast4Day, deepAvgLast4Day, lightLast4Day]
+          let sonoAvgLast3Day = [wakeAvgLast3Day, remAvgLast3Day, deepAvgLast3Day, lightLast3Day]
+          let sonoAvgLast2Day = [wakeAvgLast2Day, remAvgLast2Day, deepAvgLast2Day, lightLast2Day]
+          let sonoAvgLast1Day = [wakeAvgLast1Day, remAvgLast1Day, deepAvgLast1Day, lightLast1Day]
+          let sonoAvgToday = [wakeAvgToday, remAvgToday, deepAvgToday, lightToday]
+
+          sonoEstagios(
+            'sonoEstagiosChart', 
+            sonoAvgLastYear, 
+            sonoAvgLast3Month,
+            sonoAvgLastMonth,
+            sonoAvgLast4Day,
+            sonoAvgLast3Day,
+            sonoAvgLast2Day,
+            sonoAvgLast1Day,
+            sonoAvgToday,
+            'lastYearDesc',
+            'last3MonthsDesc',
+            'lastMonthDesc',
+            'last4DayDesc',
+            'last3DaysDesc',
+            'last2DaysDesc',
+            'yesterDayDesc',
+            'todayDesc',
+            'acrodadoLabelDesc',
+            'remLabelDesc',
+            'profundoLabelDesc',
+            'leveLabelDesc')
+      })
+
+      let sonoTotalUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.total.id}&$expand=Childs($levels=max;$expand=Exams)`
+      fetch(sonoTotalUrl)
+        .then(res => res.json())
+        .then(json => {
+
+          let sonoTotalNode = json.value[0];
+          let asleepGroupedByDate = sonoTotalNode
+            .Childs
+            .find(child => child.Name === 'Asleep')
+            .Exams
+            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+          let awakeGroupedByDate = sonoTotalNode
+            .Childs
+            .find(child => child.Name === 'Awake')
+            .Exams
+            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+          let afterWakeupGroupedByDate = sonoTotalNode
+            .Childs
+            .find(child => child.Name === 'AfterWakeup')
+            .Exams
+            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+          let fallAsleepGroupedByDate = sonoTotalNode
+            .Childs
+            .find(child => child.Name === 'FallAsleep')
+            .Exams
+            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+          
+          let today = new Date();
+          let lastYearDate = new moment(today).subtract(12, 'months').toDate();
+          let asleepLastYearAvg = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLastYearAvg = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLastYearAvg = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLastYearAvg = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+
+          let last3Months = new moment(today).subtract(3, 'months').toDate();
+          let asleepLast3Months = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLast3Months = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLast3Months = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLast3Months = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+
+          let lastMonth = new moment(today).subtract(1, 'months').toDate();
+          let asleepLastMonth = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLastMonth = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLastMonth = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLastMonth = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+
+          let last4DaysDate = new moment(today).subtract(4, 'days').toDate();
+          let asleepLast4Days = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLast4Days = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLast4Days = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLast4Days = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+
+          let last3DaysDate = new moment(today).subtract(3, 'days').toDate();
+          let asleepLast3Days = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLast3Days = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLast3Days = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLast3Days = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+
+          let last2DaysDate = new moment(today).subtract(2, 'days').toDate();
+          let asleepLast2Days = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLast2Days = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLast2Days = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLast2Days = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          
+          let last1DaysDate = new moment(today).subtract(1, 'days').toDate();
+          let asleepLast1Days = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeLast1Days = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupLast1Days = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepLast1Days = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          
+          let asleepToday = asleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let awakeToday = awakeGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let afterWakeupToday = afterWakeupGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          let fallAsleepToday = fallAsleepGroupedByDate
+            .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
+            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .Average()
+          
+          let asleep = [asleepLastYearAvg, asleepLast3Months, asleepLastMonth, asleepLast4Days, asleepLast3Days, asleepLast2Days, asleepLast1Days, asleepToday]
+          let awake = [awakeLastYearAvg, awakeLast3Months, awakeLastMonth, awakeLast4Days, awakeLast3Days, awakeLast2Days, awakeLast1Days, awakeToday]
+          let fallAsleep = [fallAsleepLastYearAvg, fallAsleepLast3Months, fallAsleepLastMonth, fallAsleepLast4Days, fallAsleepLast3Days, fallAsleepLast2Days, fallAsleepLast1Days, fallAsleepToday]
+          let afterWakeUp = [afterWakeupLastYearAvg, afterWakeupLast3Months, afterWakeupLastMonth, afterWakeupLast4Days, afterWakeupLast3Days, afterWakeupLast2Days, afterWakeupLast1Days, afterWakeupToday]
+
+          timeInBed('timeInBedChart', asleep, awake, fallAsleep, afterWakeUp)
+      })
+
+
+      let last5DaysDate = new moment().subtract(5,'days')
+      // let last5DaysDate = new moment(new Date()).subtract(5, 'days')
+      // let cardioUrl = odata.groups.url + `?$filter=Id eq ${groupsId.cardio.frequencia.id}}&$expand=Exams($filter=CollectionDate ge ${last5DaysDate.toISOString()})`
+      // let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and CollectionDate ge ${new moment('2018-08-01').toISOString()} and CollectionDate lt ${new moment('2018-08-06').toISOString()}&$orderby=CollectionDate`
+      let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${last5DaysDate.toISOString()}`
+      // let cardioUrl = `http://192.168.15.143:57956/odata/v4/ExamDecimalDetailCubeV4?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and Year eq ${last5DaysDate.year()} and Month eq ${last5DaysDate.month()} and Day ge ${last5DaysDate.date()} and Day lt ${last0DaysDate.date()}&$select=GroupId,Year,Month,Day,Hour,Minute,SumValues,CountValues&$orderby=Year,Month,Day,Hour,Minute`
+      fetch(cardioUrl)
+        .then(res => res.json())
+        .then(json => {
+          let cardios = json.value;
+          let groupFormat = 'YYYY-MM-DD'
+          let cardiosGroupedByDate = cardios
+            .GroupBy(cardio => new moment(cardio.CollectionDate).format(groupFormat))
+
+          let todayDate = new moment().format(groupFormat);
+          let yesterdayDate = new moment().subtract('1', 'days').format(groupFormat);
+          let last2DayDate = new moment().subtract('2', 'days').format(groupFormat);
+          let last3DayDate = new moment().subtract('3', 'days').format(groupFormat);
+          let last4DayDate = new moment().subtract('4', 'days').format(groupFormat);
+
+          let mapCardio = (cardio) => {
+            let date = new Date('2018-01-01T' + new moment(cardio.CollectionDate).format("HH:mm:ss"));
+            return {
+              x: new moment(date), 
+              y: cardio.DecimalValue
+            }
+          }
+
+          cardioDayly(
+            'cardioDaylyChart', 
+            !cardiosGroupedByDate[todayDate] ? [] : cardiosGroupedByDate[todayDate].map((c, key) => mapCardio(c)), 
+            !cardiosGroupedByDate[yesterdayDate] ? [] : cardiosGroupedByDate[yesterdayDate].map((c, key) => mapCardio(c)), 
+            !cardiosGroupedByDate[last2DayDate] ? [] : cardiosGroupedByDate[last2DayDate].map((c, key) => mapCardio(c)), 
+            !cardiosGroupedByDate[last3DayDate] ? [] : cardiosGroupedByDate[last3DayDate].map((c, key) => mapCardio(c)), 
+            !cardiosGroupedByDate[last4DayDate] ? [] : cardiosGroupedByDate[last4DayDate].map((c, key) => mapCardio(c)))
+
+          // let keys = Object.keys(cardiosGroupedByDate).sort()
+
+          // cardioDayly(
+          //   'cardioDaylyChart', 
+          //   !cardiosGroupedByDate[keys[4]] ? [] : cardiosGroupedByDate[keys[4]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }), 
+          //   !cardiosGroupedByDate[keys[3]] ? [] : cardiosGroupedByDate[keys[3]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }), 
+          //   !cardiosGroupedByDate[keys[2]] ? [] : cardiosGroupedByDate[keys[2]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }), 
+          //   !cardiosGroupedByDate[keys[1]] ? [] : cardiosGroupedByDate[keys[1]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }), 
+          //   !cardiosGroupedByDate[keys[0]] ? [] : cardiosGroupedByDate[keys[0]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }))
+      })
+
+
+
+      let cardioYearTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio3MonthTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardioMonthTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio4DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio3DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio2DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio1DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardioDayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+
+      let cardioYearAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+
+      let cardioYearCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+
+      let cardioYearFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+
+      let cardioYearOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+
+      var cardioYearTotalFetch = fetch(cardioYearTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3MonthTotalFetch = fetch(cardio3MonthTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioMonthTotalFetch = fetch(cardioMonthTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio4DayTotalFetch = fetch(cardio4DayTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3DayTotalFetch = fetch(cardio3DayTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio2DayTotalFetch = fetch(cardio2DayTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio1DayTotalFetch = fetch(cardio1DayTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioDayTotalFetch = fetch(cardioDayTotalUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioYearAltoFetch = fetch(cardioYearAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3MonthAltoFetch = fetch(cardio3MonthAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioMonthAltoFetch = fetch(cardioMonthAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio4DaysAltoFetch = fetch(cardio4DaysAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3DaysAltoFetch = fetch(cardio3DaysAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio2DaysAltoFetch = fetch(cardio2DaysAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio1DaysAltoFetch = fetch(cardio1DaysAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioDayAltoFetch = fetch(cardioDaysAltoUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioYearCardioFetch = fetch(cardioYearCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3MonthCardioFetch = fetch(cardio3MonthCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioMonthCardioFetch = fetch(cardioMonthCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio4DaysCardioFetch = fetch(cardio4DaysCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3DaysCardioFetch = fetch(cardio3DaysCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio2DaysCardioFetch = fetch(cardio2DaysCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio1DaysCardioFetch = fetch(cardio1DaysCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioDayCardioFetch = fetch(cardioDaysCardioUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioYearFatBurnFetch = fetch(cardioYearFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3MonthFatBurnFetch = fetch(cardio3MonthFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioMonthFatBurnFetch = fetch(cardioMonthFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio4DaysFatBurnFetch = fetch(cardio4DaysFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3DaysFatBurnFetch = fetch(cardio3DaysFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio2DaysFatBurnFetch = fetch(cardio2DaysFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio1DaysFatBurnFetch = fetch(cardio1DaysFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioDayFatBurnFetch = fetch(cardioDaysFatBurnUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioYearOutOfRangeFetch = fetch(cardioYearOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3MonthOutOfRangeFetch = fetch(cardio3MonthOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioMonthOutOfRangeFetch = fetch(cardioMonthOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio4DaysOutOfRangeFetch = fetch(cardio4DaysOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio3DaysOutOfRangeFetch = fetch(cardio3DaysOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio2DaysOutOfRangeFetch = fetch(cardio2DaysOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardio1DaysOutOfRangeFetch = fetch(cardio1DaysOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])
+
+      var cardioDayOutOfRangeFetch = fetch(cardioDaysOutOfRangeUrl)
+        .then(res => res.json())
+        .then(json => !json.value ? json.value : json.value[0])        
+
+      let fetchs = [
+        cardioYearTotalFetch, 
+        cardioYearAltoFetch,
+        cardioYearCardioFetch,
+        cardioYearFatBurnFetch,
+        cardioYearOutOfRangeFetch,
+        cardio3MonthTotalFetch, 
+        cardio3MonthAltoFetch,
+        cardio3MonthCardioFetch,
+        cardio3MonthFatBurnFetch,
+        cardio3MonthOutOfRangeFetch,
+        cardioMonthTotalFetch, 
+        cardioMonthAltoFetch,
+        cardioMonthCardioFetch,
+        cardioMonthFatBurnFetch,
+        cardioMonthOutOfRangeFetch,
+        cardio4DayTotalFetch, 
+        cardio4DaysAltoFetch,
+        cardio4DaysCardioFetch,
+        cardio4DaysFatBurnFetch,
+        cardio4DaysOutOfRangeFetch,
+        cardio3DayTotalFetch, 
+        cardio3DaysAltoFetch,
+        cardio3DaysCardioFetch,
+        cardio3DaysFatBurnFetch,
+        cardio3DaysOutOfRangeFetch,
+        cardio2DayTotalFetch, 
+        cardio2DaysAltoFetch,
+        cardio2DaysCardioFetch,
+        cardio2DaysFatBurnFetch,
+        cardio2DaysOutOfRangeFetch,
+        cardio1DayTotalFetch, 
+        cardio1DaysAltoFetch,
+        cardio1DaysCardioFetch,
+        cardio1DaysFatBurnFetch,
+        cardio1DaysOutOfRangeFetch,
+        cardioDayTotalFetch, 
+        cardioDayAltoFetch,
+        cardioDayCardioFetch,
+        cardioDayFatBurnFetch,
+        cardioDayOutOfRangeFetch,
+      ]
+
+      var combinedData = {"cardioYearTotal":{},"cardio3MonthTotal":{},"cardioMonthTotal":{}};
+      Promise.all(fetchs).then(function(values) {
+        let frequencia = (cardioSum, cardioTotalCount, peakCount = 0, cardioCount = 0, fatBurnCount = 0, outOfRangeCount = 0) => {
+          let cardioAvg = cardioSum / cardioTotalCount
+          let cardioTotalCount2 = peakCount + cardioCount + fatBurnCount + outOfRangeCount
+
+          return {
+            peak: cardioAvg * (peakCount / cardioTotalCount),
+            cardio: cardioAvg * (cardioCount / cardioTotalCount),
+            fatBurn: cardioAvg * (fatBurnCount / cardioTotalCount),
+            outOfRange: cardioAvg * (outOfRangeCount / cardioTotalCount),
+            below: cardioAvg * ((cardioTotalCount - (peakCount + cardioCount + fatBurnCount + outOfRangeCount)) / cardioTotalCount),
+          }
+        }
+
+        let year = !values[0] ? null : frequencia(
+          values[0].Sum, 
+          values[0].Count, 
+          !values[1] ? 0 : values[1].Count,
+          !values[2] ? 0 : values[2].Count,
+          !values[3] ? 0 : values[3].Count,
+          !values[4] ? 0 : values[4].Count,
+        )
+
+        let last3Month = !values[5] ? null : frequencia(
+          values[5].Sum, 
+          values[5].Count, 
+          !values[6] ? 0 : values[6].Count,
+          !values[7] ? 0 : values[7].Count,
+          !values[8] ? 0 : values[8].Count,
+          !values[9] ? 0 : values[9].Count,
+        )
+
+        let lastMonth = !values[10] ? null : frequencia(
+          values[10].Sum, 
+          values[10].Count, 
+          !values[11] ? 0 : values[11].Count,
+          !values[12] ? 0 : values[12].Count,
+          !values[13] ? 0 : values[13].Count,
+          !values[14] ? 0 : values[14].Count,
+        )
+
+        let last4Days = !values[15] ? null : frequencia(
+          values[15].Sum, 
+          values[15].Count, 
+          !values[16] ? 0 : values[16].Count,
+          !values[17] ? 0 : values[17].Count,
+          !values[18] ? 0 : values[18].Count,
+          !values[19] ? 0 : values[19].Count,
+        )
+
+        let last3Days = !values[20] ? null : frequencia(
+          values[20].Sum, 
+          values[20].Count, 
+          !values[21] ? 0 : values[21].Count,
+          !values[22] ? 0 : values[22].Count,
+          !values[23] ? 0 : values[23].Count,
+          !values[24] ? 0 : values[24].Count,
+        )
+
+        let last2Days = !values[25] ? null : frequencia(
+          values[25].Sum, 
+          values[25].Count, 
+          !values[26] ? 0 : values[26].Count,
+          !values[27] ? 0 : values[27].Count,
+          !values[28] ? 0 : values[28].Count,
+          !values[29] ? 0 : values[29].Count,
+        )
+
+        let lastDay = !values[30] ? null : frequencia(
+          values[30].Sum, 
+          values[30].Count, 
+          !values[31] ? 0 : values[31].Count,
+          !values[32] ? 0 : values[32].Count,
+          !values[33] ? 0 : values[33].Count,
+          !values[34] ? 0 : values[34].Count,
+        )
+
+        let todayDays = !values[35] ? null : frequencia(
+          values[35].Sum, 
+          values[35].Count, 
+          !values[36] ? 0 : values[36].Count,
+          !values[37] ? 0 : values[37].Count,
+          !values[38] ? 0 : values[38].Count,
+          !values[39] ? 0 : values[39].Count,
+        )
+
+        let peak = [
+          !year || !year.peak ? 0 : year.peak, 
+          !last3Month || !last3Month.peak ? 0 : last3Month.peak, 
+          !lastMonth || !lastMonth.peak ? 0 : lastMonth.peak, 
+          !last4Days || !last4Days.peak ? 0 : last4Days.peak, 
+          !last3Days || !last3Days.peak ? 0 : last3Days.peak, 
+          !last2Days || !last2Days.peak ? 0 : last2Days.peak, 
+          !lastDay || !lastDay.peak ? 0 : lastDay.peak, 
+          !todayDays || !todayDays.peak ? 0 : todayDays.peak]
+        let cardio = [
+          !year || !year.cardio ? 0 : year.cardio, 
+          !last3Month || !last3Month.cardio ? 0 : last3Month.cardio, 
+          !lastMonth || !lastMonth.cardio ? 0 : lastMonth.cardio, 
+          !last4Days || !last4Days.cardio ? 0 : last4Days.cardio, 
+          !last3Days || !last3Days.cardio ? 0 : last3Days.cardio, 
+          !last2Days || !last2Days.cardio ? 0 : last2Days.cardio, 
+          !lastDay || !lastDay.cardio ? 0 : lastDay.cardio, 
+          !todayDays || !todayDays.cardio ? 0 : todayDays.cardio]
+        let fatBurn = [
+          !year || !year.fatBurn ? 0 : year.fatBurn, 
+          !last3Month || !last3Month.fatBurn ? 0 : last3Month.fatBurn, 
+          !lastMonth || !lastMonth.fatBurn ? 0 : lastMonth.fatBurn, 
+          !last4Days || !last4Days.fatBurn ? 0 : last4Days.fatBurn, 
+          !last3Days || !last3Days.fatBurn ? 0 : last3Days.fatBurn, 
+          !last2Days || !last2Days.fatBurn ? 0 : last2Days.fatBurn, 
+          !lastDay || !lastDay.fatBurn ? 0 : lastDay.fatBurn, 
+          !todayDays || !todayDays.fatBurn ? 0 : todayDays.fatBurn]
+        let outOfRange = [
+          !year || !year.outOfRange ? 0 : year.outOfRange, 
+          !last3Month || !last3Month.outOfRange ? 0 : last3Month.outOfRange, 
+          !lastMonth || !lastMonth.outOfRange ? 0 : lastMonth.outOfRange, 
+          !last4Days || !last4Days.outOfRange ? 0 : last4Days.outOfRange, 
+          !last3Days || !last3Days.outOfRange ? 0 : last3Days.outOfRange, 
+          !last2Days || !last2Days.outOfRange ? 0 : last2Days.outOfRange, 
+          !lastDay || !lastDay.outOfRange ? 0 : lastDay.outOfRange, 
+          !todayDays || !todayDays.outOfRange ? 0 : todayDays.outOfRange]
+        let belowLow = [
+          !year || !year.below ? 0 : year.below, 
+          !last3Month || !last3Month.below ? 0 : last3Month.below, 
+          !lastMonth || !lastMonth.below ? 0 : lastMonth.below, 
+          !last4Days || !last4Days.below ? 0 : last4Days.below, 
+          !last3Days || !last3Days.below ? 0 : last3Days.below, 
+          !last2Days || !last2Days.below ? 0 : last2Days.below, 
+          !lastDay || !lastDay.below ? 0 : lastDay.below, 
+          !todayDays || !todayDays.below ? 0 : todayDays.below]
+
+
+        cardioAcompanhament('cardioAcompanhamentoChart', outOfRange, fatBurn, cardio, peak, belowLow)
+
+        return combinedData;
+      });
+
+
+
+
+      //http://localhost:3000/production/index.html?#access_token=eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMkQ1NEYiLCJzdWIiOiI2SlJTQ0YiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcmFjdCBybG9jIHJ3ZWkgcmhyIHJwcm8gcm51dCByc2xlIiwiZXhwIjoxNTQ2OTc5NTEwLCJpYXQiOjE1NDY3NTExNTh9.EXJn4mrfjhsF6av_mbqyC8nT9HR5Ij-xLdcmAFSeH2g&user_id=6JRSCF&scope=profile+location+sleep+settings+heartrate+nutrition+activity+weight+social&token_type=Bearer&expires_in=228352
+      let url_string = window.location.href.replace('#','')
+      let url = new URL(url_string);
+      let acessToken = url.searchParams.get("access_token");
+
+      if(acessToken) {
+        let fitbitSettings = {
+          method: "GET",
+          headers: new Headers({
+            "authorization": "Bearer " + acessToken,
+          })
+        }
+
+        fetch(`https://api.fitbit.com/1.2/user/-/sleep/list.json?limit=100&sort=desc&beforeDate=${new moment().add(1, 'days').format('YYYY-MM-DD')}&offset=0`, fitbitSettings)
+          .then(res => res.json())
+          .then(json => {
+            let sono = json.sleep
+            let mappedData = []
+
+            let sonoIds = {
+              totals: {
+                timeInBed: {
+                  id: '08BC140E-7D67-4283-A9EA-02D5F468AA24',
+                },
+                asleep: {
+                  id: 'F1725DF1-1D22-4CD7-94F9-8FDD26FA4965',
+                },
+                efficiency: {
+                  id: '6497347A-22BA-44D7-B500-9B3967293E18',
+                },
+                duration: {
+                  id: '6F8BB4C6-7420-4CA5-B029-B0F58D794C5D',
+                },
+                fallAsleep: {
+                  id: 'E0B0A866-AA36-4597-B1D9-C94F7825DDE3',
+                },
+                afterWakeup: {
+                  id: 'D33348BA-D90A-4D38-A600-E1971131AFA7',
+                },
+                awake: {
+                  id: '0C209B5D-7F7A-46D8-99A0-FACE6B280E68',
+                },
+              },
+              summary: {
+                asleep: {
+                  id: 'AB0DEE1F-73E8-4160-9BE7-DD43560567D5',
+                },
+                asleepCount: {
+                  id: '523C5B9E-EFF7-4AD3-8DF6-FCC00FDB2D9E',
+                },
+                awake: {
+                  id: '88E463A0-46CF-4D8C-9BAD-0CC5A1C4ABD3',
+                },
+                awakeCount: {
+                  id: '0F97B7A9-7C66-439E-9A93-28BE0F48FD6A',
+                },
+                deep: {
+                  id: 'FB3A393B-1AAF-4047-ACC1-7A1D6D3AF6CE',
+                },
+                deepCount: {
+                  id: '5AC43A3A-C66C-459C-BB16-6D66B9B9DC9D',
+                },
+                light: {
+                  id: 'EE8BC452-A04A-4320-BBFC-BB66384E0253',
+                },
+                lightCount: {
+                  id: '4ECE3413-517D-4F39-A764-3B07FA3EDA47',
+                },
+                rem: {
+                  id: 'DB707970-DBE6-4752-8523-3CF918D34084',
+                },
+                remCount: {
+                  id: '46CA76B0-1724-4B86-B369-1B5D87446ECC',
+                },
+                restless: {
+                  id: '7B6136C6-03CD-47B6-A668-A6A49D48824E',
+                },
+                restlessCount: {
+                  id: 'F95BE23B-406F-4A89-B838-317F4B154A42',
+                },
+                wake: {
+                  id: 'B837B0A9-DB6E-4321-B817-277ABBCB4B51',
+                },
+                wakeCount: {
+                  id: '1C430C3C-CC9F-4FD6-8A04-762CDCDCADC4',
+                },
+              }
+            }
+
+            sono.forEach(s=> {
+              let collectionDate = new moment(new Date(s.startTime)).format('YYYY-MM-DDTHH:mm:ssZ');
+              
+              for(let key in s) {
+                switch(key)
+                {
+                  case "timeInBed":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.timeInBed.id
+                    })
+                    break;
+                  case "minutesAsleep":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.asleep.id
+                    })
+                    break;
+                  case "duration":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.duration.id
+                    })
+                    break;
+                  case "minutesToFallAsleep":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.fallAsleep.id
+                    })
+                    break;
+                  case "minutesAfterWakeup":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.afterWakeup.id
+                    })
+                    break;
+                  case "minutesAwake":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: s[key],
+                      GroupId: sonoIds.totals.awake.id
+                    })
+                    break;
+                  default :
+                    break;
+                }
+              }
+
+              let sm = s.levels.summary;
+              for(let key in sm) {
+                switch(key)
+                {
+                  case "asleep":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.asleep.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.asleepCount.id
+                    })
+                    break;
+                  case "awake":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.awake.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.awakeCount.id
+                    })
+                    break;
+                  case "restless":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.restless.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.restlessCount.id
+                    })
+                    break;
+                  case "deep":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.deep.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.deepCount.id
+                    })
+                    break;
+                  case "light":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.light.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.lightCount.id
+                    })
+                    break;
+                  case "rem":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.rem.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.remCount.id
+                    })
+                    break;
+                  case "wake":
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].minutes,
+                      GroupId: sonoIds.summary.wake.id
+                    })
+                    mappedData.push({
+                      "@odata.type": odata.exams.decimals.nameSpace,
+                      CollectionDate: collectionDate,
+                      DecimalValue: sm[key].count,
+                      GroupId: sonoIds.summary.wakeCount.id
+                    })
+                    break;
+                  default :
+                    break;
+                }
+              }
+            })
+
+            var obj2 = {
+              method: 'post',
+              withCredentials: 'include',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Cache': 'no-cache'
+              },
+              body: JSON.stringify({ "Exams": mappedData})
+            }
+
+            fetch(odata.exams.bulkInsert.url, obj2)
+            .then(res => console.log(res))
+
+          })
+
+
+          for(let y=0; y<=1; y++) {
+            let importDate = new moment().subtract(y, 'days').format('YYYY-MM-DD')
+
+            fetch(`https://api.fitbit.com/1/user/-/activities/heart/date/${importDate}/1d/1sec/time/00:00/23:59.json`, fitbitSettings)
+            .then(res => res.json())
+            .then(json => {
+
+              let intraday = json['activities-heart-intraday'].dataset
+              let dataCast = (intra) => {
+                return {
+                  "@odata.type": odata.exams.decimals.nameSpace,
+                  GroupId: groupsId.cardio.frequencia.id,
+                  CollectionDate: new moment(new Date(importDate+'T'+intra.time)).format('YYYY-MM-DDTHH:mm:ssZ'),
+                  DecimalValue: parseFloat(intra.value)
+                } 
+              }
+              var mappedData = intraday.map(element => dataCast(element))
+
+              var obj2 = {
+                method: 'post',
+                withCredentials: 'include',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Cache': 'no-cache'
+                },
+                body: JSON.stringify({ "Exams": mappedData})
+              }
+
+              // let inserted = await fetch(odata.exams.url + "/", obj2);
+              fetch(odata.exams.bulkInsert.url, obj2)
+              .then(res => console.log(res))
+
+            });
+          }
+      }
+  
+    </script>
+  </body>
+</html>
