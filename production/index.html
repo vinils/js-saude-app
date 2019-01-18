@@ -741,8 +741,8 @@
       }
 
       let odata = {
-        // url : 'http://192.168.15.143:5000/odata/v4',
-        url: 'http://192.168.15.250/data/odata/v4',
+        // url : 'http://mypc01.ddns.net/odata/v4',
+        url: 'http://mypc01.ddns.net/data/odata/v4',
         nameSpace: '#Data.Models',
         groups: {
           point: '/groups',
@@ -1520,7 +1520,7 @@
       // let cardioUrl = odata.groups.url + `?$filter=Id eq ${groupsId.cardio.frequencia.id}}&$expand=Exams($filter=CollectionDate ge ${last5DaysDate.toISOString()})`
       // let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and CollectionDate ge ${new moment('2018-08-01').toISOString()} and CollectionDate lt ${new moment('2018-08-06').toISOString()}&$orderby=CollectionDate`
       let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${last5DaysDate.toISOString()}`
-      // let cardioUrl = `http://192.168.15.143:57956/odata/v4/ExamDecimalDetailCubeV4?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and Year eq ${last5DaysDate.year()} and Month eq ${last5DaysDate.month()} and Day ge ${last5DaysDate.date()} and Day lt ${last0DaysDate.date()}&$select=GroupId,Year,Month,Day,Hour,Minute,SumValues,CountValues&$orderby=Year,Month,Day,Hour,Minute`
+      // let cardioUrl = `http://mypc01.ddns.net/odata/v4/ExamDecimalDetailCubeV4?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and Year eq ${last5DaysDate.year()} and Month eq ${last5DaysDate.month()} and Day ge ${last5DaysDate.date()} and Day lt ${last0DaysDate.date()}&$select=GroupId,Year,Month,Day,Hour,Minute,SumValues,CountValues&$orderby=Year,Month,Day,Hour,Minute`
       fetch(cardioUrl)
         .then(res => res.json())
         .then(json => {
