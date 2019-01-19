@@ -1,13 +1,13 @@
 {
-  "name": "gentelella",
+  "name": "prjSaude",
   "version": "1.4.0",
-  "description": "Gentelella Admin is a free to use Bootstrap admin template",
+  "description": "Porject saude",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/puikinsh/gentelella.git"
+    "url": "git+https://github.com/vinils/js-saude-app.git"
   },
   "keywords": [
     "css",
@@ -20,16 +20,13 @@
     "backend",
     "responsive"
   ],
-  "author": "Aigars Silkalns",
-  "contributors": [
-    "Christian Esperar"
-  ],
+  "author": "vinils",
   "license": "MIT",
   "main": "build/js/custom.min.js",
   "bugs": {
-    "url": "https://github.com/puikinsh/gentelella/issues"
+    "url": "https://github.com/vinils/js-saude-app/issues"
   },
-  "homepage": "https://github.com/puikinsh/gentelella#readme",
+  "homepage": "https://github.com/vinils/js-saude-app#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
