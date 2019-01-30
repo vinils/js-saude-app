@@ -231,10 +231,23 @@
           <div class="row tile_count">
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
+                <div class="icon"><i class="fas fa-weight-hanging"></i></div>
+                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <h3>Peso</h3>
+                <p>
+                  <label id="lastWeightBI"><i>98</i></label>
+                  (+ <label id="positiveWeightBI"><i style="color:rgb(255, 99, 132)">1,2</i></label> 
+                  - <label id="negativeWeightBI"><i class="green">1.2</i></label> 
+                  = <label id="totalWeightBI"><i class="green">1.2</i></label>)
+              </div>
+            </div>
+            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
+              <div class="tile-stats">
                 <div class="icon"><i class="fa fa-flash"></i></div>
                 <div id="physicalExamQuantity" class="count">&nbsp;</div>
                 <h3>Físico</h3>
-                <p>Último <i id="physicalExamLastDate" class="green">1% </i></p>
+                <p>Último <i id="medicalExamLastDate" class="green">5% </i></p>
+                </p>
               </div>
             </div>
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
@@ -269,14 +282,6 @@
                 <p>Último <i id="medicalExamLastDate" class="green">6% </i></p>
               </div>
             </div>
-            <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
-              <div class="tile-stats">
-                <div class="icon"><i class="fas fa-weight-hanging"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
-                <h3>Peso</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">5% </i></p>
-              </div>
-            </div>
             <!-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
               <div class="count green">2,500</div>
@@ -296,7 +301,7 @@
 
                 <div class="row x_title">
                   <div class="col-md-6">
-                    <h3>Físico <small>Peso (total, magro e gordo) </small></h3>
+                    <h3>Físico <small>Composição (peso total, magro e gordo) </small></h3>
                   </div>
                   <div class="col-md-6">
                     <!-- <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
@@ -317,38 +322,25 @@
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
                     <div>
-                      <p>Três meses</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                      </div>
+                      <p>Último: <label id="lastWeight"><i style="color:rgb(255, 99, 132)">100</i></label></p>
                     </div>
                     <div>
-                      <p>Um mês</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Última semana</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
+                      <p>Penúltimo: <label id="last1Weight"><i style="color:rgb(26, 187, 156)">100</i></label></p>
                     </div>
                     <div>
-                      <p>Atual</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
+                      <p>Antepenúltimo: <label id="last2Weight"><i style="color:rgb(255, 191, 0)">100</i></label></p>
+                    </div>
+                    <div>
+                      <p>Mês: <label id="lastMonthWeight"><i style="color:rgb(30, 144, 255)">100</i></label></p>
+                    </div>
+                    <div>
+                      <p>3 meses: <label id="last3MonthWeight"><i style="color:rgb(30, 144, 255)">100</i></label></p>
+                    </div>
+                    <div>
+                      <p>Ano: <label id="lastYearhWeight"><i style="color:rgb(30, 144, 255)">100</i></label></p>
+                    </div>
+                    <div>
+                      <p>5 Anos: <label id="last5YearhWeight"><i style="color:rgb(30, 144, 255)">100</i></label></p>
                     </div>
                   </div>
 
@@ -711,6 +703,9 @@
 
     <script type="module">
       let groupsId = {
+        peso: {
+          id: 'BFDF8F5E-C514-416D-B6B0-35B196F5CA96',
+        },
         fisico: {
           id: 'BA70277A-2FDF-4B3F-B2AC-1521C4BEB48D',
         },
@@ -782,6 +777,74 @@
       loadMomentPrototype(moment.prototype);
       loadStringPrototype(String.prototype);
       loadArrayPrototype(Array.prototype);
+
+      let pesoUrl = odata.exams.url + `?$filter=GroupId eq ${groupsId.peso.id} and CollectionDate ge ${new moment().subtract(5, 'years').toISOString()}&$orderby=CollectionDate desc`
+      console.log(pesoUrl)
+      fetch(pesoUrl)
+        .then(res => res.json())
+        .then(json => {
+          let colors = {
+            green: 'rgb(26, 187, 156)',
+            blue: 'rgb(255, 191, 0)',
+            yellow: 'rgb(30, 144, 255)',
+            red: 'rgb(255, 99, 132)'
+          }
+          let pesos = json.value
+            .GroupBy(e => new moment(e.CollectionDate).format('YYYY-MM-DD'))
+            .map((eG, key) => ({date: key, weight: eG.Average(e=>e.DecimalValue)}))
+
+          var lastMonthsWeight = pesos
+            .filter(p => new moment(p.date, 'YYYY-MM-DD') >= new moment().subtract(1, 'months'))
+            .Average(p => p.weight)
+
+          var last3MonthsWeight = pesos
+            .filter(p => new moment(p.date, 'YYYY-MM-DD') >= new moment().subtract(3, 'months'))
+            .Average(p => p.weight)
+
+          var lastYearWeight = pesos
+            .filter(p => new moment(p.date, 'YYYY-MM-DD') >= new moment().subtract(1, 'years'))
+            .Average(p => p.weight)
+
+          var last5YearWeight = pesos
+            .filter(p => new moment(p.date, 'YYYY-MM-DD') >= new moment().subtract(5, 'years'))
+            .Average(p => p.weight)
+
+          
+          let pesosLast1Dif = pesos[0].weight - pesos[1].weight
+          let pesosLast2Dif = pesos[1].weight - pesos[2].weight
+          let pesosLast3Dif = pesos[2].weight - lastMonthsWeight
+          let pesosLast4Dif = lastMonthsWeight - last3MonthsWeight
+          let pesosLast5Dif = last3MonthsWeight - lastYearWeight
+          let pesosLast6Dif = lastYearWeight - last5YearWeight
+
+          let color = null;
+          let positiveSum = (pesosLast1Dif > 0 ? pesosLast1Dif : 0) + (pesosLast2Dif > 0 ? pesosLast2Dif : 0)
+          let negativeSum = (pesosLast1Dif < 0 ? pesosLast1Dif : 0) + (pesosLast2Dif < 0 ? pesosLast2Dif : 0)
+
+          var lastWeightBIColor = colors.red
+          if(pesosLast1Dif >= 0 && pesosLast2Dif >= 0) {
+            lastWeightBIColor = colors.green;
+          } else if(pesosLast1Dif > 0 && pesosLast2Dif < 0) {
+            lastWeightBIColor = colors.yellow;
+          } else if(pesosLast1Dif < 0 && pesosLast2Dif > 0) {
+            lastWeightBIColor = colors.blue;
+          } else if(pesosLast1Dif < 0 && pesosLast2Dif < 0) {
+            lastWeightBIColor = colors.red;
+          }
+
+          document.getElementById('lastWeightBI').innerHTML = `<i style="color:${lastWeightBIColor}">${pesos[0].weight.toFixed(2)}</i>`
+          document.getElementById('positiveWeightBI').innerHTML = `<i style="color:${colors.green}">${positiveSum.toFixed(2)}</i>`
+          document.getElementById('negativeWeightBI').innerHTML = `<i style="color:${colors.red}">${negativeSum.toFixed(2)}</i>`
+          document.getElementById('totalWeightBI').innerHTML = `<i style="color:${positiveSum + negativeSum < 0 ? colors.red : colors.green}">${(positiveSum + negativeSum).toFixed(2)}</i>`
+
+          document.getElementById('lastWeight').innerHTML = `<i style="color:${pesosLast1Dif < 0 ? colors.red : colors.green}">${pesos[0].weight.toFixed(2)}</i>`
+          document.getElementById('last1Weight').innerHTML = `<i style="color:${pesosLast2Dif < 0 ? colors.red : colors.green}">${pesos[1].weight.toFixed(2)}</i>`
+          document.getElementById('last2Weight').innerHTML = `<i style="color:${pesosLast3Dif < 0 ? colors.red : colors.green}">${pesos[2].weight.toFixed(2)}</i>`
+          document.getElementById('lastMonthWeight').innerHTML = `<i style="color:${pesosLast4Dif < 0 ? colors.red : colors.green}">${lastMonthsWeight.toFixed(2)}</i>`
+          document.getElementById('last3MonthWeight').innerHTML = `<i style="color:${pesosLast5Dif < 0 ? colors.red : colors.green}">${last3MonthsWeight.toFixed(2)}</i>`
+          document.getElementById('lastYearhWeight').innerHTML = `<i style="color:${pesosLast6Dif < 0 ? colors.red : colors.green}">${lastYearWeight.toFixed(2)}</i>`
+          document.getElementById('last5YearhWeight').innerHTML = `<i>${last5YearWeight.toFixed(2)}</i>`
+      });
 
       let fisicoUrl = odata.groups.url + `?$filter=Id eq ${groupsId.fisico.id}&$expand=Childs($levels=max;$expand=Exams)`
       fetch(fisicoUrl)
