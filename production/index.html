@@ -764,7 +764,7 @@
       odata = bugObjPropertyEdge(odata);
 
       document.getElementById('test').onclick = function() {
-        let currentUrl = window.location.href.replace('#', '') + "?"
+        let currentUrl = window.location.href.replace('http:', 'https:').replace('#', '') + "?"
         let clientId = '22D54F'
         let expiresIn = 604800
         document.location.href=`https://www.fitbit.com/oauth2/authorize?response_type=token`+
