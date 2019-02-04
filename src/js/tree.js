@@ -24,7 +24,7 @@ function loadTreeFunctions(rootNode, nodeIdVariableName, childsVariableName, par
 function toArray(treeNode) {
     let ret = [treeNode]
 
-    treeNode.forEachRecursively(child => ret.push(child))
+    treeNode.forEachTree(child => ret.push(child))
 
     return ret;
 }
@@ -34,7 +34,7 @@ function arrayOfTreeToArrayRecursively(array) {
 
     array.forEach(tree => {
         ret.push(tree)
-        tree.forEachRecursively(child => ret.push(child))
+        tree.forEachTree(child => ret.push(child))
     });
 
     return ret
