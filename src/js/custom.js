@@ -7,23 +7,23 @@ function bugObjPropertyEdge(odata) {
           url : odata.url + odata.groups.point,
           nameSpace : odata.nameSpace + odata.groups.nameSpacePoint,
         },
-        exams : {
-          ...odata.exams,
-          url : odata.url + odata.exams.point,
-          nameSpace : odata.nameSpace + odata.exams.nameSpacePoint,
+        datas : {
+          ...odata.datas,
+          url : odata.url + odata.datas.point,
+          nameSpace : odata.nameSpace + odata.datas.nameSpacePoint,
           bulkInsert: {
-            ...odata.exams.bulkInsert,
-            url: odata.url + odata.exams.point + odata.exams.bulkInsert.point,
+            ...odata.datas.bulkInsert,
+            url: odata.url + odata.datas.point + odata.datas.bulkInsert.point,
           },
           decimals: {
-            ...odata.exams.decimals,
-            url : odata.url + odata.exams.decimals.point,
-            nameSpace : odata.nameSpace + odata.exams.decimals.nameSpacePoint,
+            ...odata.datas.decimals,
+            url : odata.url + odata.datas.decimals.point,
+            nameSpace : odata.nameSpace + odata.datas.decimals.nameSpacePoint,
           }, 
           strings: {
-            ...odata.exams.strings,
-            url : odata.url + odata.exams.strings.point,
-            nameSpace : odata.nameSpace + odata.exams.strings.nameSpacePoint,
+            ...odata.datas.strings,
+            url : odata.url + odata.datas.strings.point,
+            nameSpace : odata.nameSpace + odata.datas.strings.nameSpacePoint,
           } 
         }
       }

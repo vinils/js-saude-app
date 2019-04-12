@@ -232,7 +232,7 @@
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fas fa-weight-hanging"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <div id="medicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Peso</h3>
                 <p>
                   <label id="lastWeightBI"><i>98</i></label>
@@ -244,42 +244,42 @@
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-flash"></i></div>
-                <div id="physicalExamQuantity" class="count">&nbsp;</div>
+                <div id="physicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Físico</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">5% </i></p>
+                <p>Último <i id="medicalDataLastDate" class="green">5% </i></p>
                 </p>
               </div>
             </div>
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-medkit"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <div id="medicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Médico</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">4% </i></p>
+                <p>Último <i id="medicalDataLastDate" class="green">4% </i></p>
               </div>
             </div>
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-heart"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <div id="medicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Cardiáco</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">3% </i></p>
+                <p>Último <i id="medicalDataLastDate" class="green">3% </i></p>
               </div>
             </div>
             <!-- <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-spoon"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <div id="medicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Alimentação</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">4% </i></p>
+                <p>Último <i id="medicalDataLastDate" class="green">4% </i></p>
               </div>
             </div> -->
             <div class="animated flipInY col-lg-2 col-md-3 col-sm-6 col-xs-12">
               <div class="tile-stats">
                 <div class="icon"><i class="fa fa-bed"></i></div>
-                <div id="medicalExamQuantity" class="count">&nbsp;</div>
+                <div id="medicalDataQuantity" class="count">&nbsp;</div>
                 <h3>Sono</h3>
-                <p>Último <i id="medicalExamLastDate" class="green">6% </i></p>
+                <p>Último <i id="medicalDataLastDate" class="green">6% </i></p>
               </div>
             </div>
             <!-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
@@ -743,20 +743,20 @@
           point: '/groups',
           nameSpacePoint: '.Group',
         },
-        exams : {
-          point: '/exams',
-          nameSpacePoint: '.Exam',
+        datas : {
+          point: '/datas',
+          nameSpacePoint: '.Data',
           bulkInsert: {
             point: '/BulkInsert',
-            nameSpacePoint: '.Exam',
+            nameSpacePoint: '.Data',
           }, 
           decimals: {
-            point: '/examdecimals',
-            nameSpacePoint: '.ExamDecimal',
+            point: '/datadecimals',
+            nameSpacePoint: '.DataDecimal',
           }, 
           strings: {
-            point: '/examstrings',
-            nameSpacePoint: '.ExamString',
+            point: '/datastrings',
+            nameSpacePoint: '.DataString',
           }
         }
       }
@@ -778,8 +778,7 @@
       loadStringPrototype(String.prototype);
       loadArrayPrototype(Array.prototype);
 
-      let pesoUrl = odata.exams.url + `?$filter=GroupId eq ${groupsId.peso.id} and CollectionDate ge ${new moment().subtract(5, 'years').toISOString()}&$orderby=CollectionDate desc`
-      console.log(pesoUrl)
+      let pesoUrl = odata.datas.url + `?$filter=GroupId eq ${groupsId.peso.id} and CollectionDate ge ${new moment().subtract(5, 'years').toISOString()}&$orderby=CollectionDate desc`
       fetch(pesoUrl)
         .then(res => res.json())
         .then(json => {
@@ -846,7 +845,7 @@
           document.getElementById('last5YearhWeight').innerHTML = `<i>${last5YearWeight.toFixed(2)}</i>`
       });
 
-      let fisicoUrl = odata.groups.url + `?$filter=Id eq ${groupsId.fisico.id}&$expand=Childs($levels=max;$expand=Exams)`
+      let fisicoUrl = odata.groups.url + `?$filter=Id eq ${groupsId.fisico.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(fisicoUrl)
         .then(res => res.json())
         .then(json => {
@@ -926,10 +925,10 @@
             }
           })
 
-          let pesoGroupByDate = (pesoExam) => new moment(pesoExam.CollectionDate).format('YYYY-MM-DD')
+          let pesoGroupByDate = (pesoData) => new moment(pesoData.CollectionDate).format('YYYY-MM-DD')
 
-          let pesoGroupKeys = pesoMagro.Exams.map(pesoGroupByDate)
-            .concat(pesoGordo.Exams.map(pesoGroupByDate))
+          let pesoGroupKeys = pesoMagro.Datas.map(pesoGroupByDate)
+            .concat(pesoGordo.Datas.map(pesoGroupByDate))
             .Distinct()
             .sort((a,b) => new Date(a) - new Date(b))
 
@@ -938,12 +937,12 @@
           let pesosMagro = [];
           let pesosGordo = [];
           
-          let pesoGordoExamsGroupedByCollectionDate = pesoGordo.Exams.GroupBy(pesoGroupByDate)
-          let pesoMagroExamsGroupedByCollectionDate = pesoMagro.Exams.GroupBy(pesoGroupByDate)
+          let pesoGordoDatasGroupedByCollectionDate = pesoGordo.Datas.GroupBy(pesoGroupByDate)
+          let pesoMagroDatasGroupedByCollectionDate = pesoMagro.Datas.GroupBy(pesoGroupByDate)
 
           pesoGroupKeys.forEach(dateKey => {
-            let pesoGordoAvg = pesoGordoExamsGroupedByCollectionDate[dateKey].Average(exam => exam.DecimalValue);
-            let pesoMagroAvg = pesoMagroExamsGroupedByCollectionDate[dateKey].Average(exam => exam.DecimalValue);
+            let pesoGordoAvg = pesoGordoDatasGroupedByCollectionDate[dateKey].Average(data => data.DecimalValue);
+            let pesoMagroAvg = pesoMagroDatasGroupedByCollectionDate[dateKey].Average(data => data.DecimalValue);
 
             pesosGordo.push(pesoGordoAvg)
             pesosMagro.push(pesoMagroAvg)
@@ -961,38 +960,38 @@
           // pesoDate(
           //   'pesoChart',
           //     pesoGroupKeys.map((date, index) => {return {x:new Date(date), y:pesosTotal[index]}}),
-          //     pesoMagroExams.Exams.map(exam=> {return {x:new Date(exam.CollectionDate), y:exam.DecimalValue}}),
-          //     pesoGordoExams.Exams.map(exam=> {return {x:new Date(exam.CollectionDate), y:exam.DecimalValue}}))
+          //     pesoMagroDatas.Datas.map(data=> {return {x:new Date(data.CollectionDate), y:data.DecimalValue}}),
+          //     pesoGordoDatas.Datas.map(data=> {return {x:new Date(data.CollectionDate), y:data.DecimalValue}}))
 
-          let evolucaoGroupByDate = (exam) => new moment(exam.CollectionDate).format('YYYY-MM-DD')
+          let evolucaoGroupByDate = (data) => new moment(data.CollectionDate).format('YYYY-MM-DD')
 
-          let evolucaoDates = quadril.Exams.map(evolucaoGroupByDate)
-            .concat(torax.Exams.map(evolucaoGroupByDate))
-            .concat(abdomen.Exams.map(evolucaoGroupByDate))
-            .concat(cintura.Exams.map(evolucaoGroupByDate))
-            .concat(antebracoDireito.Exams.map(evolucaoGroupByDate))
-            .concat(antebracoEsquerdo.Exams.map(evolucaoGroupByDate))
-            .concat(bracoDireito.Exams.map(evolucaoGroupByDate))
-            .concat(bracoEsquerdo.Exams.map(evolucaoGroupByDate))
-            .concat(coxaDireita.Exams.map(evolucaoGroupByDate))
-            .concat(coxaEsquerda.Exams.map(evolucaoGroupByDate))
-            .concat(panturrilhaDireita.Exams.map(evolucaoGroupByDate))
-            .concat(panturrilhaEsquerda.Exams.map(evolucaoGroupByDate))
+          let evolucaoDates = quadril.Datas.map(evolucaoGroupByDate)
+            .concat(torax.Datas.map(evolucaoGroupByDate))
+            .concat(abdomen.Datas.map(evolucaoGroupByDate))
+            .concat(cintura.Datas.map(evolucaoGroupByDate))
+            .concat(antebracoDireito.Datas.map(evolucaoGroupByDate))
+            .concat(antebracoEsquerdo.Datas.map(evolucaoGroupByDate))
+            .concat(bracoDireito.Datas.map(evolucaoGroupByDate))
+            .concat(bracoEsquerdo.Datas.map(evolucaoGroupByDate))
+            .concat(coxaDireita.Datas.map(evolucaoGroupByDate))
+            .concat(coxaEsquerda.Datas.map(evolucaoGroupByDate))
+            .concat(panturrilhaDireita.Datas.map(evolucaoGroupByDate))
+            .concat(panturrilhaEsquerda.Datas.map(evolucaoGroupByDate))
             .Distinct()
             .sort((a,b) => new Date(a) - new Date(b))
 
-          let quadrilExamsGroupedByCollectionDate = quadril.Exams.GroupBy(evolucaoGroupByDate)
-          let toraxExamsGroupedByCollectionDate = torax.Exams.GroupBy(evolucaoGroupByDate)
-          let abdomenExamsGroupedByCollectionDate = abdomen.Exams.GroupBy(evolucaoGroupByDate)
-          let cinturaExamsGroupedByCollectionDate = cintura.Exams.GroupBy(evolucaoGroupByDate)
-          let antebracoDireitoExamsGroupedByCollectionDate = antebracoDireito.Exams.GroupBy(evolucaoGroupByDate)
-          let antebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdo.Exams.GroupBy(evolucaoGroupByDate)
-          let bracoDireitoExamsGroupedByCollectionDate = bracoDireito.Exams.GroupBy(evolucaoGroupByDate)
-          let bracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdo.Exams.GroupBy(evolucaoGroupByDate)
-          let coxaDireitaExamsGroupedByCollectionDate = coxaDireita.Exams.GroupBy(evolucaoGroupByDate)
-          let coxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerda.Exams.GroupBy(evolucaoGroupByDate)
-          let panturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireita.Exams.GroupBy(evolucaoGroupByDate)
-          let panturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerda.Exams.GroupBy(evolucaoGroupByDate)
+          let quadrilDatasGroupedByCollectionDate = quadril.Datas.GroupBy(evolucaoGroupByDate)
+          let toraxDatasGroupedByCollectionDate = torax.Datas.GroupBy(evolucaoGroupByDate)
+          let abdomenDatasGroupedByCollectionDate = abdomen.Datas.GroupBy(evolucaoGroupByDate)
+          let cinturaDatasGroupedByCollectionDate = cintura.Datas.GroupBy(evolucaoGroupByDate)
+          let antebracoDireitoDatasGroupedByCollectionDate = antebracoDireito.Datas.GroupBy(evolucaoGroupByDate)
+          let antebracoEsquerdoDatasGroupedByCollectionDate = antebracoEsquerdo.Datas.GroupBy(evolucaoGroupByDate)
+          let bracoDireitoDatasGroupedByCollectionDate = bracoDireito.Datas.GroupBy(evolucaoGroupByDate)
+          let bracoEsquerdoDatasGroupedByCollectionDate = bracoEsquerdo.Datas.GroupBy(evolucaoGroupByDate)
+          let coxaDireitaDatasGroupedByCollectionDate = coxaDireita.Datas.GroupBy(evolucaoGroupByDate)
+          let coxaEsquerdaDatasGroupedByCollectionDate = coxaEsquerda.Datas.GroupBy(evolucaoGroupByDate)
+          let panturrilhaDireitaDatasGroupedByCollectionDate = panturrilhaDireita.Datas.GroupBy(evolucaoGroupByDate)
+          let panturrilhaEsquerdaDatasGroupedByCollectionDate = panturrilhaEsquerda.Datas.GroupBy(evolucaoGroupByDate)
 
           let quadrilEvolucao = []
           let toraxEvolucao = []
@@ -1011,120 +1010,120 @@
           let panturrilhaEsquerdaEvolucao = []
           let panturrilhasEvolucao = []
 
-          let firstQuadrilExamsGroupedByCollectionDate = quadrilExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstToraxExamsGroupedByCollectionDate = toraxExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstAbdomenExamsGroupedByCollectionDate = abdomenExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstCinturaExamsGroupedByCollectionDate = cinturaExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstAntebracoDireitoExamsGroupedByCollectionDate = antebracoDireitoExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstAntebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstBracoDireitoExamsGroupedByCollectionDate = bracoDireitoExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstBracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstCoxaDireitaExamsGroupedByCollectionDate = coxaDireitaExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstCoxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstPanturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireitaExamsGroupedByCollectionDate[evolucaoDates[0]]
-          let firstPanturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[0]]
+          let firstQuadrilDatasGroupedByCollectionDate = quadrilDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstToraxDatasGroupedByCollectionDate = toraxDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAbdomenDatasGroupedByCollectionDate = abdomenDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCinturaDatasGroupedByCollectionDate = cinturaDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAntebracoDireitoDatasGroupedByCollectionDate = antebracoDireitoDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstAntebracoEsquerdoDatasGroupedByCollectionDate = antebracoEsquerdoDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstBracoDireitoDatasGroupedByCollectionDate = bracoDireitoDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstBracoEsquerdoDatasGroupedByCollectionDate = bracoEsquerdoDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCoxaDireitaDatasGroupedByCollectionDate = coxaDireitaDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstCoxaEsquerdaDatasGroupedByCollectionDate = coxaEsquerdaDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstPanturrilhaDireitaDatasGroupedByCollectionDate = panturrilhaDireitaDatasGroupedByCollectionDate[evolucaoDates[0]]
+          let firstPanturrilhaEsquerdaDatasGroupedByCollectionDate = panturrilhaEsquerdaDatasGroupedByCollectionDate[evolucaoDates[0]]
 
           for(let index = 1; index < evolucaoDates.length; index++) {
-            let currentQuadrilExamsGroupedByCollectionDate = quadrilExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentQuadrilDatasGroupedByCollectionDate = quadrilDatasGroupedByCollectionDate[evolucaoDates[index]]
 
-            if(!currentQuadrilExamsGroupedByCollectionDate) {
+            if(!currentQuadrilDatasGroupedByCollectionDate) {
               quadrilEvolucao.push(quadrilEvolucao.Last())
             } else {
-              quadrilEvolucao.push((currentQuadrilExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstQuadrilExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              quadrilEvolucao.push((currentQuadrilDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstQuadrilDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentToraxExamsGroupedByCollectionDate = toraxExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentToraxDatasGroupedByCollectionDate = toraxDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentToraxExamsGroupedByCollectionDate) {
+            if(!currentToraxDatasGroupedByCollectionDate) {
               toraxEvolucao.push(toraxEvolucao.Last())
             } else {
-              toraxEvolucao.push((currentToraxExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstToraxExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              toraxEvolucao.push((currentToraxDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstToraxDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentAbdomenExamsGroupedByCollectionDate = abdomenExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentAbdomenDatasGroupedByCollectionDate = abdomenDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentAbdomenExamsGroupedByCollectionDate) {
+            if(!currentAbdomenDatasGroupedByCollectionDate) {
               abdomenEvolucao.push(abdomenEvolucao.Last())
             } else {
-              abdomenEvolucao.push((currentAbdomenExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAbdomenExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              abdomenEvolucao.push((currentAbdomenDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstAbdomenDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentCinturaExamsGroupedByCollectionDate = cinturaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentCinturaDatasGroupedByCollectionDate = cinturaDatasGroupedByCollectionDate[evolucaoDates[index]]
 
-            if(!currentCinturaExamsGroupedByCollectionDate) {
+            if(!currentCinturaDatasGroupedByCollectionDate) {
               cinturaEvolucao.push(cinturaEvolucao.Last())
             } else {
-              cinturaEvolucao.push((currentCinturaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCinturaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              cinturaEvolucao.push((currentCinturaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstCinturaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentAntebracoDireitoExamsGroupedByCollectionDate = antebracoDireitoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentAntebracoDireitoDatasGroupedByCollectionDate = antebracoDireitoDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentAntebracoDireitoExamsGroupedByCollectionDate) {
+            if(!currentAntebracoDireitoDatasGroupedByCollectionDate) {
               antebracoDireitoEvolucao.push(antebracoDireitoEvolucao.Last())
             } else {
-              antebracoDireitoEvolucao.push((currentAntebracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAntebracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              antebracoDireitoEvolucao.push((currentAntebracoDireitoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstAntebracoDireitoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentAntebracoEsquerdoExamsGroupedByCollectionDate = antebracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentAntebracoEsquerdoDatasGroupedByCollectionDate = antebracoEsquerdoDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentAntebracoEsquerdoExamsGroupedByCollectionDate) {
+            if(!currentAntebracoEsquerdoDatasGroupedByCollectionDate) {
               antebracoEsquerdoEvolucao.push(antebracoEsquerdoEvolucao.Last())
             } else {
-              antebracoEsquerdoEvolucao.push((currentAntebracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstAntebracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              antebracoEsquerdoEvolucao.push((currentAntebracoEsquerdoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstAntebracoEsquerdoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
             antebracosEvolucao.push((antebracoDireitoEvolucao.Last() + antebracoEsquerdoEvolucao.Last())/2)
 
-            let currentBracoDireitoExamsGroupedByCollectionDate = bracoDireitoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentBracoDireitoDatasGroupedByCollectionDate = bracoDireitoDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentBracoDireitoExamsGroupedByCollectionDate) {
+            if(!currentBracoDireitoDatasGroupedByCollectionDate) {
               bracoDireitoEvolucao.push(bracoDireitoEvolucao.Last())
             } else {
-              bracoDireitoEvolucao.push((currentBracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstBracoDireitoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              bracoDireitoEvolucao.push((currentBracoDireitoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstBracoDireitoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentBracoEsquerdoExamsGroupedByCollectionDate = bracoEsquerdoExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentBracoEsquerdoDatasGroupedByCollectionDate = bracoEsquerdoDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentBracoEsquerdoExamsGroupedByCollectionDate) {
+            if(!currentBracoEsquerdoDatasGroupedByCollectionDate) {
               bracoEsquerdoEvolucao.push(bracoEsquerdoEvolucao.Last())
             } else {
-              bracoEsquerdoEvolucao.push((currentBracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstBracoEsquerdoExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              bracoEsquerdoEvolucao.push((currentBracoEsquerdoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstBracoEsquerdoDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
             bracosEvolucao.push((bracoDireitoEvolucao.Last() + bracoEsquerdoEvolucao.Last())/2)
 
-            let currentCoxaDireitaExamsGroupedByCollectionDate = coxaDireitaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentCoxaDireitaDatasGroupedByCollectionDate = coxaDireitaDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentCoxaDireitaExamsGroupedByCollectionDate) {
+            if(!currentCoxaDireitaDatasGroupedByCollectionDate) {
               coxaDireitaEvolucao.push(coxaDireitaEvolucao.Last())
             } else {
-              coxaDireitaEvolucao.push((currentCoxaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCoxaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              coxaDireitaEvolucao.push((currentCoxaDireitaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstCoxaDireitaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentCoxaEsquerdaExamsGroupedByCollectionDate = coxaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentCoxaEsquerdaDatasGroupedByCollectionDate = coxaEsquerdaDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentCoxaEsquerdaExamsGroupedByCollectionDate) {
+            if(!currentCoxaEsquerdaDatasGroupedByCollectionDate) {
               coxaEsquerdaEvolucao.push(coxaEsquerdaEvolucao.Last())
             } else {
-              coxaEsquerdaEvolucao.push((currentCoxaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstCoxaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              coxaEsquerdaEvolucao.push((currentCoxaEsquerdaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstCoxaEsquerdaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
             coxasEvolucao.push((coxaDireitaEvolucao.Last() + coxaEsquerdaEvolucao.Last())/2)
 
-            let currentPanturrilhaDireitaExamsGroupedByCollectionDate = panturrilhaDireitaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentPanturrilhaDireitaDatasGroupedByCollectionDate = panturrilhaDireitaDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentPanturrilhaDireitaExamsGroupedByCollectionDate) {
+            if(!currentPanturrilhaDireitaDatasGroupedByCollectionDate) {
               panturrilhaDireitaEvolucao.push(panturrilhaDireitaEvolucao.Last())
             } else {
-              panturrilhaDireitaEvolucao.push((currentPanturrilhaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstPanturrilhaDireitaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              panturrilhaDireitaEvolucao.push((currentPanturrilhaDireitaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstPanturrilhaDireitaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
-            let currentPanturrilhaEsquerdaExamsGroupedByCollectionDate = panturrilhaEsquerdaExamsGroupedByCollectionDate[evolucaoDates[index]]
+            let currentPanturrilhaEsquerdaDatasGroupedByCollectionDate = panturrilhaEsquerdaDatasGroupedByCollectionDate[evolucaoDates[index]]
             
-            if(!currentPanturrilhaEsquerdaExamsGroupedByCollectionDate) {
+            if(!currentPanturrilhaEsquerdaDatasGroupedByCollectionDate) {
               panturrilhaEsquerdaEvolucao.push(panturrilhaEsquerdaEvolucao.Last())
             } else {
-              panturrilhaEsquerdaEvolucao.push((currentPanturrilhaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue) / firstPanturrilhaEsquerdaExamsGroupedByCollectionDate.Average(exam=>exam.DecimalValue)-1)*100)
+              panturrilhaEsquerdaEvolucao.push((currentPanturrilhaEsquerdaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue) / firstPanturrilhaEsquerdaDatasGroupedByCollectionDate.Average(data=>data.DecimalValue)-1)*100)
             }
 
             panturrilhasEvolucao.push((panturrilhaDireitaEvolucao.Last() + panturrilhaEsquerdaEvolucao.Last())/2)
@@ -1146,18 +1145,18 @@
 
         benchmarking(
           'benchmarkingChart',
-          (bracoDireitoExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + bracoEsquerdoExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
-          toraxExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue),
-          (coxaDireitaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + coxaEsquerdaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
-          (panturrilhaDireitaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue) + panturrilhaEsquerdaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue))/2,
-          cinturaExamsGroupedByCollectionDate[lastEvolucaoDate].Average(exam=> exam.DecimalValue),
+          (bracoDireitoDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue) + bracoEsquerdoDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue))/2,
+          toraxDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue),
+          (coxaDireitaDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue) + coxaEsquerdaDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue))/2,
+          (panturrilhaDireitaDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue) + panturrilhaEsquerdaDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue))/2,
+          cinturaDatasGroupedByCollectionDate[lastEvolucaoDate].Average(data=> data.DecimalValue),
           pesosTotal.Last(),
           176
         )
       })
 
 
-      let sonoSumaryUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.summary.id}&$expand=Childs($levels=max;$expand=Exams)`
+      let sonoSumaryUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.summary.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(sonoSumaryUrl)
         .then(res => res.json())
         .then(json => {
@@ -1169,201 +1168,201 @@
           let wakeAvgLastYear = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastYearDate)
+            .Average(data => data.DecimalValue)
           let remAvgLastYear = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastYearDate)
+            .Average(data => data.DecimalValue)
           let deepAvgLastYear = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastYearDate)
+            .Average(data => data.DecimalValue)
           let lightLastYear = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastYearDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastYearDate)
+            .Average(data => data.DecimalValue)
           let last3MonthsDate = new moment(todayDate).subtract(3, 'months').toDate();
           let wakeAvgLast3Months = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= last3MonthsDate)
+            .Average(data => data.DecimalValue)
           let remAvgLast3Months = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= last3MonthsDate)
+            .Average(data => data.DecimalValue)
           let deepAvgLast3Months = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= last3MonthsDate)
+            .Average(data => data.DecimalValue)
           let lightLast3Months = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= last3MonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= last3MonthsDate)
+            .Average(data => data.DecimalValue)
           let lastMonthsDate = new moment(todayDate).subtract(1, 'months').toDate();
           let wakeAvgLastMonths = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastMonthsDate)
+            .Average(data => data.DecimalValue)
           let remAvgLastMonths = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastMonthsDate)
+            .Average(data => data.DecimalValue)
           let deepAvgLastMonths = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastMonthsDate)
+            .Average(data => data.DecimalValue)
           let lightLastMonths = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate) >= lastMonthsDate)
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate) >= lastMonthsDate)
+            .Average(data => data.DecimalValue)
           let last4DayDate = new moment(todayDate).subtract(4, 'days').toDate();
           let wakeAvgLast4Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let remAvgLast4Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let deepAvgLast4Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let lightLast4Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last4DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last4DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let last3DayDate = new moment(todayDate).subtract(3, 'days').toDate();
           let wakeAvgLast3Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let remAvgLast3Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let deepAvgLast3Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let lightLast3Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last3DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last3DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let last2DayDate = new moment(todayDate).subtract(2, 'days').toDate();
           let wakeAvgLast2Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let remAvgLast2Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let deepAvgLast2Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let lightLast2Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last2DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last2DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let last1DayDate = new moment(todayDate).subtract(1, 'days').toDate();
           let wakeAvgLast1Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let remAvgLast1Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let deepAvgLast1Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(last1DayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(last1DayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let lightLast1Day = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(todayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let wakeAvgToday = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Wake')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(todayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let remAvgToday = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'REM')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(todayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let deepAvgToday = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Deep')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
-            .Average(exam => exam.DecimalValue)
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(todayDate, 'day'))
+            .Average(data => data.DecimalValue)
           let lightToday = sonoSumrayNode
             .Childs
             .find(child => child.Name === 'Light')
-            .Exams
-            .filter(exam => new moment(exam.CollectionDate).isSame(todayDate, 'day'))
-            .Average(exam => exam.DecimalValue)            
+            .Datas
+            .filter(data => new moment(data.CollectionDate).isSame(todayDate, 'day'))
+            .Average(data => data.DecimalValue)            
 
           let sonoAvgLastYear = [wakeAvgLastYear, remAvgLastYear, deepAvgLastYear, lightLastYear]
           let sonoAvgLast3Month = [wakeAvgLast3Months, remAvgLast3Months, deepAvgLast3Months, lightLast3Months]
@@ -1398,7 +1397,7 @@
             'leveLabelDesc')
       })
 
-      let sonoTotalUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.total.id}&$expand=Childs($levels=max;$expand=Exams)`
+      let sonoTotalUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.total.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(sonoTotalUrl)
         .then(res => res.json())
         .then(json => {
@@ -1407,166 +1406,166 @@
           let asleepGroupedByDate = sonoTotalNode
             .Childs
             .find(child => child.Name === 'Asleep')
-            .Exams
-            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+            .Datas
+            .GroupBy(data => new moment(data.CollectionDate).format('YYYY-MM-DD'))
           let awakeGroupedByDate = sonoTotalNode
             .Childs
             .find(child => child.Name === 'Awake')
-            .Exams
-            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+            .Datas
+            .GroupBy(data => new moment(data.CollectionDate).format('YYYY-MM-DD'))
           let afterWakeupGroupedByDate = sonoTotalNode
             .Childs
             .find(child => child.Name === 'AfterWakeup')
-            .Exams
-            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+            .Datas
+            .GroupBy(data => new moment(data.CollectionDate).format('YYYY-MM-DD'))
           let fallAsleepGroupedByDate = sonoTotalNode
             .Childs
             .find(child => child.Name === 'FallAsleep')
-            .Exams
-            .GroupBy(exam => new moment(exam.CollectionDate).format('YYYY-MM-DD'))
+            .Datas
+            .GroupBy(data => new moment(data.CollectionDate).format('YYYY-MM-DD'))
           
           let today = new Date();
           let lastYearDate = new moment(today).subtract(12, 'months').toDate();
           let asleepLastYearAvg = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLastYearAvg = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLastYearAvg = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLastYearAvg = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastYearDate)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
 
           let last3Months = new moment(today).subtract(3, 'months').toDate();
           let asleepLast3Months = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLast3Months = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLast3Months = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLast3Months = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= last3Months)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
 
           let lastMonth = new moment(today).subtract(1, 'months').toDate();
           let asleepLastMonth = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLastMonth = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLastMonth = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLastMonth = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD') >= lastMonth)
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
 
           let last4DaysDate = new moment(today).subtract(4, 'days').toDate();
           let asleepLast4Days = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLast4Days = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLast4Days = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLast4Days = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last4DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
 
           let last3DaysDate = new moment(today).subtract(3, 'days').toDate();
           let asleepLast3Days = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLast3Days = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLast3Days = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLast3Days = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last3DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
 
           let last2DaysDate = new moment(today).subtract(2, 'days').toDate();
           let asleepLast2Days = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLast2Days = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLast2Days = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLast2Days = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last2DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           
           let last1DaysDate = new moment(today).subtract(1, 'days').toDate();
           let asleepLast1Days = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeLast1Days = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupLast1Days = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepLast1Days = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(last1DaysDate, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           
           let asleepToday = asleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let awakeToday = awakeGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let afterWakeupToday = afterWakeupGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           let fallAsleepToday = fallAsleepGroupedByDate
             .filter((value, key) => new moment(key, 'YYYY-MM-DD').isSame(today, 'day'))
-            .map(examsGrouped => examsGrouped.Sum(exam => exam.DecimalValue))
+            .map(datasGrouped => datasGrouped.Sum(data => data.DecimalValue))
             .Average()
           
           let asleep = [asleepLastYearAvg, asleepLast3Months, asleepLastMonth, asleepLast4Days, asleepLast3Days, asleepLast2Days, asleepLast1Days, asleepToday]
@@ -1580,10 +1579,10 @@
 
       let last5DaysDate = new moment().subtract(5,'days')
       // let last5DaysDate = new moment(new Date()).subtract(5, 'days')
-      // let cardioUrl = odata.groups.url + `?$filter=Id eq ${groupsId.cardio.frequencia.id}}&$expand=Exams($filter=CollectionDate ge ${last5DaysDate.toISOString()})`
-      // let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and CollectionDate ge ${new moment('2018-08-01').toISOString()} and CollectionDate lt ${new moment('2018-08-06').toISOString()}&$orderby=CollectionDate`
-      let cardioUrl = odata.exams.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${last5DaysDate.toISOString()}`
-      // let cardioUrl = `http://mypc01.ddns.net/odata/v4/ExamDecimalDetailCubeV4?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and Year eq ${last5DaysDate.year()} and Month eq ${last5DaysDate.month()} and Day ge ${last5DaysDate.date()} and Day lt ${last0DaysDate.date()}&$select=GroupId,Year,Month,Day,Hour,Minute,SumValues,CountValues&$orderby=Year,Month,Day,Hour,Minute`
+      // let cardioUrl = odata.groups.url + `?$filter=Id eq ${groupsId.cardio.frequencia.id}}&$expand=Datas($filter=CollectionDate ge ${last5DaysDate.toISOString()})`
+      // let cardioUrl = odata.datas.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and CollectionDate ge ${new moment('2018-08-01').toISOString()} and CollectionDate lt ${new moment('2018-08-06').toISOString()}&$orderby=CollectionDate`
+      let cardioUrl = odata.datas.decimals.url + `?$filter=GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${last5DaysDate.toISOString()}`
+      // let cardioUrl = `http://mypc01.ddns.net/odata/v4/DataDecimalDetailCubeV4?$filter=GroupId eq ${groupsId.cardio.frequencia.id}} and Year eq ${last5DaysDate.year()} and Month eq ${last5DaysDate.month()} and Day ge ${last5DaysDate.date()} and Day lt ${last0DaysDate.date()}&$select=GroupId,Year,Month,Day,Hour,Minute,SumValues,CountValues&$orderby=Year,Month,Day,Hour,Minute`
       fetch(cardioUrl)
         .then(res => res.json())
         .then(json => {
@@ -1627,50 +1626,50 @@
 
 
 
-      let cardioYearTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio3MonthTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardioMonthTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio4DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio3DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio2DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio1DayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardioDayTotalUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardioYearTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio3MonthTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardioMonthTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio4DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio3DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio2DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardio1DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+      let cardioDayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
 
-      let cardioYearAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysAltoUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioYearAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
 
-      let cardioYearCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysCardioUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioYearCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
 
-      let cardioYearFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysFatBurnUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioYearFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
 
-      let cardioYearOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysOutOfRangeUrl = odata.exams.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioYearOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3MonthOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioMonthOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio4DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio3DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio2DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardio1DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioDaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
 
       var cardioYearTotalFetch = fetch(cardioYearTotalUrl)
         .then(res => res.json())
@@ -2114,7 +2113,7 @@
                 {
                   case "timeInBed":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.timeInBed.id
@@ -2122,7 +2121,7 @@
                     break;
                   case "minutesAsleep":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.asleep.id
@@ -2130,7 +2129,7 @@
                     break;
                   case "duration":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.duration.id
@@ -2138,7 +2137,7 @@
                     break;
                   case "minutesToFallAsleep":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.fallAsleep.id
@@ -2146,7 +2145,7 @@
                     break;
                   case "minutesAfterWakeup":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.afterWakeup.id
@@ -2154,7 +2153,7 @@
                     break;
                   case "minutesAwake":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: s[key],
                       GroupId: sonoIds.totals.awake.id
@@ -2171,13 +2170,13 @@
                 {
                   case "asleep":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.asleep.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.asleepCount.id
@@ -2185,13 +2184,13 @@
                     break;
                   case "awake":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.awake.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.awakeCount.id
@@ -2199,13 +2198,13 @@
                     break;
                   case "restless":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.restless.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.restlessCount.id
@@ -2213,13 +2212,13 @@
                     break;
                   case "deep":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.deep.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.deepCount.id
@@ -2227,13 +2226,13 @@
                     break;
                   case "light":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.light.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.lightCount.id
@@ -2241,13 +2240,13 @@
                     break;
                   case "rem":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.rem.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.remCount.id
@@ -2255,13 +2254,13 @@
                     break;
                   case "wake":
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].minutes,
                       GroupId: sonoIds.summary.wake.id
                     })
                     mappedData.push({
-                      "@odata.type": odata.exams.decimals.nameSpace,
+                      "@odata.type": odata.datas.decimals.nameSpace,
                       CollectionDate: collectionDate,
                       DecimalValue: sm[key].count,
                       GroupId: sonoIds.summary.wakeCount.id
@@ -2281,10 +2280,10 @@
                 'Content-Type': 'application/json',
                 'Cache': 'no-cache'
               },
-              body: JSON.stringify({ "Exams": mappedData})
+              body: JSON.stringify({ "Datas": mappedData})
             }
 
-            fetch(odata.exams.bulkInsert.url, obj2)
+            fetch(odata.datas.bulkInsert.url, obj2)
             .then(res => console.log(res))
 
           })
@@ -2300,7 +2299,7 @@
               let intraday = json['activities-heart-intraday'].dataset
               let dataCast = (intra) => {
                 return {
-                  "@odata.type": odata.exams.decimals.nameSpace,
+                  "@odata.type": odata.datas.decimals.nameSpace,
                   GroupId: groupsId.cardio.frequencia.id,
                   CollectionDate: new moment(new Date(importDate+'T'+intra.time)).format('YYYY-MM-DDTHH:mm:ssZ'),
                   DecimalValue: parseFloat(intra.value)
@@ -2316,11 +2315,11 @@
                   'Content-Type': 'application/json',
                   'Cache': 'no-cache'
                 },
-                body: JSON.stringify({ "Exams": mappedData})
+                body: JSON.stringify({ "Datas": mappedData})
               }
 
-              // let inserted = await fetch(odata.exams.url + "/", obj2);
-              fetch(odata.exams.bulkInsert.url, obj2)
+              // let inserted = await fetch(odata.datas.url + "/", obj2);
+              fetch(odata.datas.bulkInsert.url, obj2)
               .then(res => console.log(res))
 
             });
