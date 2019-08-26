@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
@@ -5,7 +7,8 @@ var gulp = require('gulp'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create(),
-    babel = require("gulp-babel");
+    babel = require("gulp-babel"),
+    replace = require('gulp-replace');
 
 var DEST = 'build/';
 
@@ -14,6 +17,7 @@ gulp.task('scripts', function() {
         'src/js/helpers/*.js',
         'src/js/*.js',
       ])
+	  .pipe(replace('${DATA_POINT}', process.env.DATA_POINT))
       .pipe(babel())
       .pipe(concat('custom.js'))
       .pipe(gulp.dest(DEST+'/js'))

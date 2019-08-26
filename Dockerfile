@@ -9,4 +9,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD gulp
+# gulp scripts is required since there is some issues related to build folder when deleted
+CMD gulp scripts && gulp

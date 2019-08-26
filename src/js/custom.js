@@ -1,5 +1,8 @@
 //EDGE cant understand object property "..."
 function bugObjPropertyEdge(odata) {
+	
+      odata.url = location.protocol + '//${DATA_POINT}'
+
       odata = {
         ...odata,
         groups: {
