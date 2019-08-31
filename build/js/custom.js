@@ -7934,7 +7934,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         }))) : null;
       };
 
-      return fetch("http://mypc01.ddns.net/data/odata/v4/groups?$filter=Id eq 98B34F14-6DAA-3EE4-4EB1-E6D4F691960E&$expand=Childs($levels=max;$expand=Datas($expand=Data.Models.DataDecimal/LimitDenormalized,Data.Models.DataString/LimitDenormalized))").then(function (e) {
+      return fetch("http://" + process.env.REACT_APP_DATA_POINT + "/groups?$filter=Id eq 98B34F14-6DAA-3EE4-4EB1-E6D4F691960E&$expand=Childs($levels=max;$expand=Datas($expand=Data.Models.DataDecimal/LimitDenormalized,Data.Models.DataString/LimitDenormalized))").then(function (e) {
         return e.json();
       }).then(function (e) {
         var t = e.value[0];
