@@ -1622,212 +1622,235 @@
           //   !cardiosGroupedByDate[keys[0]] ? [] : cardiosGroupedByDate[keys[0]].map((c, key) => { return {x: new moment(c.CollectionDate).time(), y: c.DecimalValue} }))
       })
 
+      let fncUrl = (groupId, startDate, endDate, startValue, endValue) => {
+        let ret = "/DecimalTotal?"
+        
+        if(groupId)
+          ret += `groupId=${groupId}&`
 
+        if(startDate)
+          ret += `startDate=${startDate}&`
 
-      let cardioYearTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio3MonthTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardioMonthTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio4DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio3DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio2DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardio1DayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
-      let cardioDayTotalUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()})/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count, DecimalValue with sum as Sum))`
+        if(endDate)
+          ret += `endDate=${endDate}&`
 
-      let cardioYearAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysAltoUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 165 and DecimalValue lt 220)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+        if(startValue)
+          ret += `startValue=${startValue}&`
 
-      let cardioYearCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysCardioUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 136 and DecimalValue lt 165)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+        if(endValue)
+          ret += `endValue=${endValue}&`
+          
+        return ret.substring(0, ret.length - 1);
+      }
 
-      let cardioYearFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysFatBurnUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 97 and DecimalValue lt 136)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let decimalUrl = odata.datas.decimals.url;
+      let cardioGroupId = groupsId.cardio.frequencia.id;
+	    let todayDate = () => new moment(new moment().format('YYYY-MM-DD'));
+	  
+      let cardioYearTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, null, null)
+      let cardio3MonthTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, null, null)
+      let cardioMonthTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, null, null)
+      let cardio4DayTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(4, 'days').toISOString(), todayDate().subtract(3, 'days').toISOString(), null, null)
+      let cardio3DayTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'days').toISOString(), todayDate().subtract(2, 'days').toISOString(), null, null)
+      let cardio2DayTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(2, 'days').toISOString(), todayDate().subtract(1, 'days').toISOString(), null, null)
+      let cardio1DayTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'days').toISOString(), todayDate().toISOString(), null, null)
+      let cardioDayTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().toISOString(), null, null, null)
 
-      let cardioYearOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'years').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3MonthOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioMonthOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'months').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio4DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(4, 'days').toISOString()}  and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio3DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(3, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio2DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(2, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardio1DaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).subtract(1, 'days').toISOString()} and CollectionDate lt ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
-      let cardioDaysOutOfRangeUrl = odata.datas.decimals.url + `?$apply=filter(GroupId eq ${groupsId.cardio.frequencia.id} and CollectionDate ge ${new moment(new moment().format('YYYY-MM-DD')).toISOString()} and DecimalValue ge 30 and DecimalValue lt 97)/groupby((GroupId),aggregate(CollectionDate with countdistinct as Count))`
+      let cardioYearAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, 165, 220)
+      let cardio3MonthAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, 165, 220)
+      let cardioMonthAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, 165, 220)
+      let cardio4DaysAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(4, 'days').toISOString(), todayDate().subtract(3, 'days').toISOString(), 165, 220)
+      let cardio3DaysAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'days').toISOString(), todayDate().subtract(2, 'days').toISOString(), 165, 220)
+      let cardio2DaysAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(2, 'days').toISOString(), todayDate().subtract(1, 'days').toISOString(), 165, 220)
+      let cardio1DaysAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'days').toISOString(), todayDate().toISOString(), 165, 220)
+      let cardioDaysAltoUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().toISOString(), null, 165, 220)
+
+      let cardioYearCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, 136, 165)
+      let cardio3MonthCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, 136, 165)
+      let cardioMonthCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, 136, 165)
+      let cardio4DaysCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(4, 'days').toISOString(), todayDate().subtract(3, 'days').toISOString(), 136, 165)
+      let cardio3DaysCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'days').toISOString(), todayDate().subtract(2, 'days').toISOString(), 136, 165)
+      let cardio2DaysCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(2, 'days').toISOString(), todayDate().subtract(1, 'days').toISOString(), 136, 165)
+      let cardio1DaysCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'days').toISOString(), todayDate().toISOString(), 136, 165)
+      let cardioDaysCardioUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().toISOString(), null, 136, 165)
+
+      let cardioYearFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, 97, 136)
+      let cardio3MonthFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, 97, 136)
+      let cardioMonthFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, 97, 136)
+      let cardio4DaysFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(4, 'days').toISOString(), todayDate().subtract(3, 'days').toISOString(), 97, 136)
+      let cardio3DaysFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'days').toISOString(), todayDate().subtract(2, 'days').toISOString(), 97, 136)
+      let cardio2DaysFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(2, 'days').toISOString(), todayDate().subtract(1, 'days').toISOString(), 97, 136)
+      let cardio1DaysFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'days').toISOString(), todayDate().toISOString(), 97, 136)
+      let cardioDaysFatBurnUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().toISOString(), null, 97, 136)
+
+      let cardioYearOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, 30, 97)
+      let cardio3MonthOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, 30, 97)
+      let cardioMonthOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, 30, 97)
+      let cardio4DaysOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(4, 'days').toISOString(), todayDate().subtract(3, 'days').toISOString(), 30, 97)
+      let cardio3DaysOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'days').toISOString(), todayDate().subtract(2, 'days').toISOString(), 30, 97)
+      let cardio2DaysOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(2, 'days').toISOString(), todayDate().subtract(1, 'days').toISOString(), 30, 97)
+      let cardio1DaysOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'days').toISOString(), todayDate().toISOString(), 30, 97)
+      let cardioDaysOutOfRangeUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().toISOString(), null, 30, 97)
 
       var cardioYearTotalFetch = fetch(cardioYearTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3MonthTotalFetch = fetch(cardio3MonthTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioMonthTotalFetch = fetch(cardioMonthTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio4DayTotalFetch = fetch(cardio4DayTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3DayTotalFetch = fetch(cardio3DayTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio2DayTotalFetch = fetch(cardio2DayTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio1DayTotalFetch = fetch(cardio1DayTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioDayTotalFetch = fetch(cardioDayTotalUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioYearAltoFetch = fetch(cardioYearAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3MonthAltoFetch = fetch(cardio3MonthAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioMonthAltoFetch = fetch(cardioMonthAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio4DaysAltoFetch = fetch(cardio4DaysAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3DaysAltoFetch = fetch(cardio3DaysAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio2DaysAltoFetch = fetch(cardio2DaysAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio1DaysAltoFetch = fetch(cardio1DaysAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioDayAltoFetch = fetch(cardioDaysAltoUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioYearCardioFetch = fetch(cardioYearCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3MonthCardioFetch = fetch(cardio3MonthCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioMonthCardioFetch = fetch(cardioMonthCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio4DaysCardioFetch = fetch(cardio4DaysCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3DaysCardioFetch = fetch(cardio3DaysCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio2DaysCardioFetch = fetch(cardio2DaysCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio1DaysCardioFetch = fetch(cardio1DaysCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioDayCardioFetch = fetch(cardioDaysCardioUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioYearFatBurnFetch = fetch(cardioYearFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3MonthFatBurnFetch = fetch(cardio3MonthFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioMonthFatBurnFetch = fetch(cardioMonthFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio4DaysFatBurnFetch = fetch(cardio4DaysFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3DaysFatBurnFetch = fetch(cardio3DaysFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio2DaysFatBurnFetch = fetch(cardio2DaysFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio1DaysFatBurnFetch = fetch(cardio1DaysFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioDayFatBurnFetch = fetch(cardioDaysFatBurnUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioYearOutOfRangeFetch = fetch(cardioYearOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3MonthOutOfRangeFetch = fetch(cardio3MonthOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioMonthOutOfRangeFetch = fetch(cardioMonthOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio4DaysOutOfRangeFetch = fetch(cardio4DaysOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio3DaysOutOfRangeFetch = fetch(cardio3DaysOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio2DaysOutOfRangeFetch = fetch(cardio2DaysOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardio1DaysOutOfRangeFetch = fetch(cardio1DaysOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])
 
       var cardioDayOutOfRangeFetch = fetch(cardioDaysOutOfRangeUrl)
         .then(res => res.json())
-        .then(json => !json.value ? json.value : json.value[0])        
+        .then(json => !json.value ? json.value : JSON.parse(json.value)[0])        
 
       let fetchs = [
         cardioYearTotalFetch, 
