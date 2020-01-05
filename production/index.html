@@ -1643,6 +1643,10 @@
         return ret.substring(0, ret.length - 1);
       }
 
+      let decimalUrl = odata.datas.decimals.url;
+      let cardioGroupId = groupsId.cardio.frequencia.id;
+      let todayDate = () => new moment(new moment().format('YYYY-MM-DD'));
+
       let cardioYearTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'years').toISOString(), null, null, null)
       let cardio3MonthTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(3, 'months').toISOString(), null, null, null)
       let cardioMonthTotalUrl = decimalUrl + fncUrl(cardioGroupId, todayDate().subtract(1, 'months').toISOString(), null, null, null)
