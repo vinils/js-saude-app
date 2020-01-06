@@ -843,11 +843,11 @@
           document.getElementById('last5YearhWeight').innerHTML = `<i>${last5YearWeight.toFixed(2)}</i>`
       });
 
-      let fisicoUrl = odata.groups.url + `/ChildsRecursively?groupId=${groupsId.fisico.id}`
+      let fisicoUrl = odata.groups.url + `?$filter=Id eq ${groupsId.fisico.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(fisicoUrl)
         .then(res => res.json())
         .then(json => {
-          let tree = JSON.parse(json.value)[0]
+          let tree = json.value[0]
           loadTreeFunctions(tree, 'Id', 'Childs', 'Parent', 'ParentId')
 
           let pesoMagro = null
@@ -1154,12 +1154,12 @@
       })
 
 
-      let sonoSumaryUrl = odata.groups.url + `/ChildsRecursively?groupId=${groupsId.sono.summary.id}`
+      let sonoSumaryUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.summary.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(sonoSumaryUrl)
         .then(res => res.json())
         .then(json => {
 
-          let sonoSumrayNode = JSON.parse(json.value)[0];
+          let sonoSumrayNode = json.value[0];
 
           let todayDate = new Date();
           let lastYearDate = new moment(todayDate).subtract(12, 'months').toDate();
@@ -1395,12 +1395,12 @@
             'leveLabelDesc')
       })
 
-      let sonoTotalUrl = odata.groups.url + `/ChildsRecursively?groupId=${groupsId.sono.total.id}`
+      let sonoTotalUrl = odata.groups.url + `?$filter=Id eq ${groupsId.sono.total.id}&$expand=Childs($levels=max;$expand=Datas)`
       fetch(sonoTotalUrl)
         .then(res => res.json())
         .then(json => {
 
-          let sonoTotalNode = JSON.parse(json.value)[0];
+          let sonoTotalNode = json.value[0];
           let asleepGroupedByDate = sonoTotalNode
             .Childs
             .find(child => child.Name === 'Asleep')
