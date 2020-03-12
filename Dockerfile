@@ -1,20 +1,13 @@
-FROM stefanscherer/node-windows:latest
+FROM vinils/react-saude-exams-app:latest as exams_app
 
-##############
-# require for build react exams grid submodule
+FROM node:10.19.0
 
-##problem to se a variable
-#ENV REAT_APP_DATA_POINT=%DATA_POINT%
+WORKDIR /app
 
-WORKDIR /usr/exams_app
-
-COPY /react-saude-exams-app/package*.json ./
-RUN npm install
-	
-COPY /react-saude-exams-app/. ./
-##############
-
-WORKDIR /usr/app
+COPY --from=exams_app /usr/app/build/static/js ./src/js
+#rename main.*.js* main.14a5b63f.js* #windows version
+RUN mv ./src/js/main.????????.js main.14a5b63f.js
+RUN mv ./src/js/main.????????.js.map main.14a5b63f.js.map
 
 COPY package*.json ./
 RUN npm install
@@ -25,4 +18,4 @@ COPY . .
 EXPOSE 3000
 
 # gulp scripts is required since there is some issues related to build folder when deleted
-CMD cd ..\exams_app && npm run build && del ..\app\src\js\main.*.js* && cd build\static\js && rename main.*.js* main.14a5b63f.js* && move /Y main.*.js* C:\usr\app\src\js && cd C:\usr\app && gulp scripts && gulp
+CMD gulp scripts; gulp
