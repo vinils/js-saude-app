@@ -1,6 +1,8 @@
 # js-saude-app
 Saude page
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/vinils/js-saude-app.svg)](https://hub.docker.com/r/vinils/js-saude-app)
+[![Docker Stars](https://img.shields.io/docker/stars/vinils/js-saude-app.svg)](https://hub.docker.com/r/vinils/js-saude-app)
 <a href="https://hub.docker.com/r/vinils/js-saude-app/builds" target="_blank">Docker Builds</a>
 
 docker build -t vinils/myhealth_app .  
