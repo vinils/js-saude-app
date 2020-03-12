@@ -4,7 +4,7 @@ FROM node:10.19.0
 
 WORKDIR /app
 
-COPY --from=exams_app /usr/app/build/static/js ./src/js
+COPY --from=exams_app /app/build/static/js ./src/js
 #rename main.*.js* main.14a5b63f.js* #windows version
 RUN mv ./src/js/main.????????.js main.14a5b63f.js
 RUN mv ./src/js/main.????????.js.map main.14a5b63f.js.map
