@@ -1,13 +1,13 @@
 FROM vinils/react-saude-exams-app:latest as exams_app
 
-FROM node:10.19.0
+FROM node:8-alpine
 
 WORKDIR /app
 
 COPY --from=exams_app /app/build/static/js ./src/js
 #rename main.*.js* main.14a5b63f.js* #windows version
-RUN mv ./src/js/main.????????.js main.14a5b63f.js
-RUN mv ./src/js/main.????????.js.map main.14a5b63f.js.map
+RUN mv ./src/js/main.????????.js ./src/js/main.14a5b63f.js
+RUN mv ./src/js/main.????????.js.map ./src/js/main.14a5b63f.js.map
 
 COPY package*.json ./
 RUN npm install
